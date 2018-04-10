@@ -1,1 +1,5 @@
-patchwork
+
+.idea
+out
+*.iml
+*.xml

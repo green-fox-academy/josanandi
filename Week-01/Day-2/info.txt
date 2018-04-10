@@ -1,0 +1,24 @@
+uniq - egymas utani azonos ertekeket szuri ki
+grep - regex
+sed - replace and edit
+
+
+GIT:
+fork: nem a sajat repositorym, ha le akarom masolni, akkor forkolom (clone) a sajat githubos repomra.
+clone: csak elso alkalommal van, amikor letoltom a gepemre
+pull request: az idegent ertes (eredeti verziora, nem kozos repository), felajanlas a hasznalonak ahonnan lemasoltam
+
+branch: kulonallo repository osszekotve
+    pl.  master
+            staging
+                development
+                    branchA
+                    branchB
+                    branchC
+                    featureA
+
+merge: ugyanazt akarjuk atirni, felulirni
+
+repository / repositoryba nem irunk
+
+git config credential.helper store -- jelszo, felhasznalonevet menti le.

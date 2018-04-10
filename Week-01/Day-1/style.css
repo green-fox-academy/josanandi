@@ -1,0 +1,52 @@
+body {
+    padding: 0px 80px;
+    font-family: consolas, courier;
+    background-image: url(topography.png);
+}
+ 
+header{
+    background-color: #333333;
+    text-align: right;
+    padding: 10px;
+}
+
+h1{
+    margin: 80px 0px 10px 0px;
+}
+
+h2{
+    color: #ff0099;
+}
+h3{
+    font-size: 24px;
+    text-align: center;
+}
+h4 {
+    font-family: 'Lobster', cursive;
+    font-size: 18px;
+}
+
+li{
+    display: inline;
+    margin: 10px 20px;
+}
+
+
+a{
+    color: #ff0099;
+}
+
+#separator{
+    text-align: center;
+    font-size: 30px;
+}
+
+img{
+    align-content: start;
+    display:inline;
+}
+
+nav {
+    display: inline;
+    align-content: end;
+}

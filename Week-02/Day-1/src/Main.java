@@ -1,3 +1,4 @@
+import javax.sound.sampled.Line;
 import java.util.Scanner;
 
 class HelloMe {
@@ -288,19 +289,259 @@ class AverageOfInput {
         // Sum: 22, Average: 4.4
 
         int sum = 0;
-        int index=0;
 
         System.out.println("Please enter five integers in a row ");
         Scanner input = new Scanner(System.in);
+        String line = input.nextLine();
+
+        input = new Scanner(line);
 
         while (input.hasNextInt()){
             sum += input.nextInt();
-            index ++;
         }
 
-        double average = sum/index;
+        double average = sum/5;
 
         System.out.println("Sum: " + sum + ", Average: " + average);
+    }
+}
+
+class OddEven{
+    public static void main(String[] args) {
+        // Write a program that reads a number from the standard input,
+        // Then prints "Odd" if the number is odd, or "Even" if it is even.
+
+        System.out.println("Could you please enter a number");
+        Scanner scanner = new Scanner( System.in);
+        int number = Integer.parseInt(scanner.nextLine());
+        if (number%2 == 0 ){
+            System.out.println("Even");
+        }
+        else{
+            System.out.println("Odd");
+        }
+    }
+}
+
+class OneTwoALot{
+    public static void main(String[] args) {
+        // Write a program that reads a number form the standard input,
+        // If the number is zero or smaller it should print: Not enough
+        // If the number is one it should print: One
+        // If the number is two it should print: Two
+        // If the number is more than two it should print: A lot
+
+        System.out.println("Could you please enter a number");
+        Scanner scanner = new Scanner( System.in);
+        int number = Integer.parseInt(scanner.nextLine());
+        if (number <= 0 ){
+            System.out.println("Not enough");
+        }
+        else if( number == 1){
+            System.out.println("One");
+        }
+        else if( number == 2){
+            System.out.println("Two");
+        }
+        else if( number > 2){
+            System.out.println("A lot");
+        }
+    }
+}
+
+class PrintBigger{
+    public static void main(String[] args) {
+        // Write a program that asks for two numbers and prints the bigger one
+
+        System.out.println("Could you please enter a number");
+        Scanner scanner = new Scanner( System.in);
+        int a = Integer.parseInt(scanner.nextLine());
+        System.out.println("Could you please enter another number");
+        int b = Integer.parseInt(scanner.nextLine());
+
+        if ( a > b){
+            System.out.println("The bigger number is " + a);
+        }
+        else if (b>a) {
+            System.out.println("The bigger number is " + b);
+        }
+        else{
+            System.out.println("The numbers are equal");
+        }
+    }
+}
+
+class PartyIndicator{
+    public static void main(String[] args) {
+        // Write a program that asks for two numbers
+        // Thw first number represents the number of girls that comes to a party, the
+        // second the boys
+        // It should print: The party is exellent!
+        // If the the number of girls and boys are equal and there are more people coming than 20
+        //
+        // It should print: Quite cool party!
+        // It there are more than 20 people coming but the girl - boy ratio is not 1-1
+        // It should print: Average party...
+        // If there are less people coming than 20
+        //
+        // It should print: Sausage party
+        // If no girls are coming, regardless the count of the people
+
+        System.out.println("Could you please enter the number of girls at the party");
+        Scanner scanner = new Scanner( System.in);
+        int girls = Integer.parseInt(scanner.nextLine());
+
+        System.out.println("Could you please enter the number of boys at the party");
+        int boys = Integer.parseInt(scanner.nextLine());
+        int totalParticipants = girls + boys;
+
+        if ((girls == boys) & (totalParticipants >= 20)){
+            System.out.println("The party is excellent!");
+        }
+
+        else if( girls == 0) {
+            System.out.println("Sausage party");
+        }
+
+        else if ((girls != boys) & (totalParticipants >= 20)) {
+            System.out.println("Quite cool party!");
+        }
+
+        else if (totalParticipants <20){
+            System.out.println("Average party...");
+        }
+    }
+}
+
+class ConditionalVariableMutation {
+    public static void main(String[] args) {
+        double a = 24;
+        int out = 0;
+        // if a is even increment out by one
+
+        if(a % 2 == 0){
+            out++;
+        }
+        System.out.println(out);
+
+        int b = 13;
+        String out2 = "";
+        // if b is between 10 and 20 set out2 to "Sweet!"
+        // if less than 10 set out2 to "Less!",
+        // if more than 20 set out2 to "More!"
+        if (10 <= b  &&  b  <= 20){
+            out2 = "Sweet!";
+        }
+        else if (b < 10){
+            out2 = "Less!";
+        }
+        else{
+            out2 = "More!";
+        }
+        System.out.println(out2);
+
+
+        int c = 123;
+        int credits = 48;
+        boolean isBonus = false;
+        // if credits are at least 50,
+        // and isBonus is false decrement c by 2
+        // if credits are smaller than 50,
+        // and isBonus is false decrement c by 1
+        // if isBonus is true c should remain the same
+
+        if ( !isBonus){
+            if (credits >= 50){
+                c -= 2;
+            }
+            else{
+                c--;
+            }
+        }
+        System.out.println(c);
+
+
+        int d = 8;
+        int time = 120;
+        String out3 = "";
+        // if d is dividable by 4
+        // and time is not more than 200
+        // set out3 to "check"
+        // if time is more than 200
+        // set out3 to "Time out"
+        // otherwise set out3 to "Run Forest Run!"
+
+        if ( d % 4 == 0) {
+            if (time <= 200) {
+                out3 = "check";
+            } else {
+                out3 = "Time out";
+            }
+        }
+        else{
+            out3 = "Run Forest Run!";
+        }
+
+        System.out.println(out3);
+    }
+}
+
+class IWontCheatOnTheExams {
+    public static void main(String[] args) {
+        // Create a program that writes this line 100 times:
+        // "I won't cheat on the exam!"
+        for (int i = 0; i < 100; i++) {
+            System.out.println("I won't cheat on the exam!");
+        }
+    }
+}
+
+class PrintEven {
+    public static void main(String[] args) {
+        // Create a program that prints all the even numbers between 0 and 500
+        for (int i = 0; i <= 500; i += 2) {
+            System.out.println(i);
+        }
+    }
+}
+
+class MultiplicationTable    {
+    public static void main(String[] args) {
+        //Create a program that asks for a number and prints the multiplication table with that number
+
+        System.out.println("Please enter a number!");
+        Scanner input = new Scanner(System.in);
+        int number =Integer.parseInt(input.nextLine());
+
+        for (int i = 1; i <= 10; i ++ ) {
+            System.out.println(i + " * " + number + " = " + (i*number));
+        }
+    }
+}
+
+class CountFromTo    {
+    public static void main(String[] args) {
+        // Create a program that asks for two numbers
+        // If the second number is not bigger than the first one it should print:
+        // "The second number should be bigger"
+        //
+        // If it is bigger it should count from the first number to the second by one
+
+        System.out.println("Please enter 2 numbers!");
+        Scanner input = new Scanner(System.in);
+        int a =Integer.parseInt(input.nextLine());
+        int b =Integer.parseInt(input.nextLine());
+
+        if (a > b){
+            System.out.println("The second number should be greater");
+        }
+        else{
+            
+            for ( int i=b; i <=  a; i ++ ) {
+                System.out.println(i);
+            }
+        }
 
     }
 }
+

@@ -265,22 +265,6 @@ class MileToKmConverter {
     }
 }
 
-class AnimalsAndLegs {
-    public static void main(String[] args) {
-        // Write a program that asks for two integers
-        // The first represents the number of chickens the farmer has
-        // The second represents the number of pigs owned by the farmer
-        // It should print how many legs all the animals have
-        System.out.println("Please enter the total number of chickens at the farm! ");
-        Scanner scanner = new Scanner(System.in);
-        int chickens = Integer.parseInt(scanner.nextLine());
-        System.out.println("Please enter the total number of pigs at the farm! ");
-        int pigs = Integer.parseInt(scanner.nextLine());
-        int totalAnimalLegs = chickens*2 + pigs*4;
-
-        System.out.println("The total legs of the animals at the farms is: " + totalAnimalLegs);
-    }
-}
 
 class AverageOfInput {
     public static void main(String[] args) {
@@ -519,29 +503,5 @@ class MultiplicationTable    {
     }
 }
 
-class CountFromTo    {
-    public static void main(String[] args) {
-        // Create a program that asks for two numbers
-        // If the second number is not bigger than the first one it should print:
-        // "The second number should be bigger"
-        //
-        // If it is bigger it should count from the first number to the second by one
 
-        System.out.println("Please enter 2 numbers!");
-        Scanner input = new Scanner(System.in);
-        int a =Integer.parseInt(input.nextLine());
-        int b =Integer.parseInt(input.nextLine());
-
-        if (a > b){
-            System.out.println("The second number should be greater");
-        }
-        else{
-            
-            for ( int i=b; i <=  a; i ++ ) {
-                System.out.println(i);
-            }
-        }
-
-    }
-}
 

@@ -1,3 +1,5 @@
+import java.util.Scanner;
+
 class HelloMe {
     public static void main(String[] args) {
         // Modify this program to greet you instead of the World!
@@ -197,5 +199,108 @@ class VariableMutation {
         //fill the k variable with its cotnent 4 times
 
         System.out.println(k);
+    }
+}
+
+class Cuboid {
+    public static void main(String[] args) {
+        // Write a program that stores 3 sides of a cuboid as variables (doubles)
+        // The program should write the surface area and volume of the cuboid like:
+        //
+        // Surface Area: 600
+        // Volume: 1000
+        System.out.println("Please enter the lenght, height and width of a cuboid!");
+        Scanner scanner = new Scanner(System.in);
+        double lenght = Double.parseDouble(scanner.nextLine());
+        double height = Double.parseDouble(scanner.nextLine());
+        double width = Double.parseDouble(scanner.nextLine());
+
+        double surface=2*height*(lenght+width);
+        double volume=lenght*width*height;
+
+        System.out.println("Surface Area: " + surface);
+        System.out.println("Volume: "+ volume);
+
+    }
+}
+
+class SecondsInADay {
+    public static void main(String[] args) {
+        int currentHours = 14;
+        int currentMinutes = 34;
+        int currentSeconds = 42;
+        int secondsInDay = 60*60*24;
+        int passedSeconds = currentSeconds+ currentMinutes*60+ currentHours*60*60;
+        int remainingSeconds = secondsInDay - passedSeconds;
+
+        // Write a program that prints the remaining seconds (as an integer) from a
+        // day if the current time is represented by the variables
+        System.out.println("The remaining seconds are:  " + remainingSeconds);
+
+    }
+}
+
+class HelloUser {
+    public static void main(String[] args) {
+        // Modify this program to greet user instead of the World!
+        // The program should ask for the name of the user
+        System.out.println("Could you please enter your name?");
+        Scanner scanner = new Scanner( System.in);
+        String name = scanner.nextLine();
+        System.out.println("Hello, " + name + "!");
+    }
+}
+
+class MileToKmConverter {
+    public static void main(String[] args) {
+        // Write a program that asks for an integer that is a distance in kilometers,
+        // then it converts that value to miles and prints it
+        System.out.println("Please enter the distance in km-s! ");
+        Scanner scanner = new Scanner(System.in);
+        int distanceKm = Integer.parseInt(scanner.nextLine());
+        double distanceMiles = distanceKm*0.6213;
+
+        System.out.println("The distance in Miles is: " + distanceMiles);
+    }
+}
+
+class AnimalsAndLegs {
+    public static void main(String[] args) {
+        // Write a program that asks for two integers
+        // The first represents the number of chickens the farmer has
+        // The second represents the number of pigs owned by the farmer
+        // It should print how many legs all the animals have
+        System.out.println("Please enter the total number of chickens at the farm! ");
+        Scanner scanner = new Scanner(System.in);
+        int chickens = Integer.parseInt(scanner.nextLine());
+        System.out.println("Please enter the total number of pigs at the farm! ");
+        int pigs = Integer.parseInt(scanner.nextLine());
+        int totalAnimalLegs = chickens*2 + pigs*4;
+
+        System.out.println("The total legs of the animals at the farms is: " + totalAnimalLegs);
+    }
+}
+
+class AverageOfInput {
+    public static void main(String[] args) {
+        // Write a program that asks for 5 integers in a row,
+        // then it should print the sum and the average of these numbers like:
+        // Sum: 22, Average: 4.4
+
+        int sum = 0;
+        int index=0;
+
+        System.out.println("Please enter five integers in a row ");
+        Scanner input = new Scanner(System.in);
+
+        while (input.hasNextInt()){
+            sum += input.nextInt();
+            index ++;
+        }
+
+        double average = sum/index;
+
+        System.out.println("Sum: " + sum + ", Average: " + average);
+
     }
 }

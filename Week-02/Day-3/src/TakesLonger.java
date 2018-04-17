@@ -8,16 +8,16 @@ public class TakesLonger {
         int indexOfIt = quote.indexOf("It ");
         int indexOfYou = quote.indexOf("you");
 
-        for ( String character: theMissingPart) {
-            for ( String charInQuote: quote) {
-                if (character == charInQuote ) {
-                    quote1 += charInQuote;
-                }
+       // for ( String character: theMissingPart) {
+         //   for ( String charInQuote: quote) {
+           //     if (character == charInQuote ) {
+             //       quote1 += charInQuote;
+           //     }
 
-            }
-        }
-        quote = quote1 +quote2;
+         //   }
+       // }
+        //quote = quote1 +quote2;
 
-        System.out.println(quote);
+        //System.out.println(quote);
     }
 }

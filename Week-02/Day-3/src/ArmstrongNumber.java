@@ -14,7 +14,7 @@ public class ArmstrongNumber {
         int power = String.valueOf(isArmstrongnumber).length();
         long copyNumber = isArmstrongnumber;
         long result =0;
-        
+
         while (copyNumber > 0) {
             result +=  Math.pow(copyNumber%10,power);
             copyNumber /= 10;

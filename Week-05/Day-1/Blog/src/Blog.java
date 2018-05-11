@@ -15,9 +15,8 @@ public class Blog {
         this.blog.remove(i);
 
     }
-    public List update (int i, BlogPost post){
+    public void update (int i, BlogPost post){
         this.blog.set(i, post);
-        return blog;
     }
 
     public int lenght(){

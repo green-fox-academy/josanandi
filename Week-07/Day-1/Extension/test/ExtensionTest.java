@@ -77,4 +77,13 @@ class ExtensionTest {
     void testMedian_six(){
         assertEquals(4, extension.median(Arrays.asList(5,2,3,4,5)));
     }
+
+    @Test
+    void testTranslate_mama() {
+        assertEquals("mavamava", extension.translate("mama"));
+    }
+    @Test
+    void testTranslate_kakao() {
+        assertEquals("kavakavaovo", extension.translate("kakao"));
+    }
 }

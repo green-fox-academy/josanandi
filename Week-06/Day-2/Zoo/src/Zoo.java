@@ -16,5 +16,7 @@ public class Zoo {
         System.out.println("A " + reptile.getName() + reptile.haveSkin());
         System.out.println("A " + mammal.getName() + mammal.haveSkin());
         System.out.println("A " + bird.getName()+ bird.haveSkin());
+
+        bird.fly();
     }
 }

@@ -12,10 +12,9 @@ public class FibonacciTest {
     public void testForIndex5GenerateFibonacciNumberSequence() {
         Fibonacci test1 = new Fibonacci();
 
-        List<Integer> result = new ArrayList<>();
-        result = test1.generateFibonacciSequence(6);
+        long expected = 3;
+        long result = test1.generateFibonacciSequence(5);
 
-        List<Integer> expected = new ArrayList<>(Arrays.asList(0, 1, 1, 2, 3, 5));
         assertEquals(expected, result);
 
     }
@@ -24,25 +23,52 @@ public class FibonacciTest {
     public void testForIndex0GenerateFibonacciNumberSequence() {
         Fibonacci test1 = new Fibonacci();
 
-        List<Integer> result = new ArrayList<>();
-        result = test1.generateFibonacciSequence(0);
+        long expected = 0;
+        long result = test1.generateFibonacciSequence(0);
 
-        List<Integer> expected = new ArrayList<>(Arrays.asList(0));
         assertEquals(expected, result);
 
     }
-
 
     @Test
-    public void testForIndexNegative2GenerateFibonacciNumberSequence() {
+    public void testForIndex1GenerateFibonacciNumberSequence() {
         Fibonacci test1 = new Fibonacci();
 
-        List<Integer> result = new ArrayList<>();
-        result = test1.generateFibonacciSequence(-2);
+        long expected = 1;
+        long result = test1.generateFibonacciSequence(1);
 
-        List<Integer> expected = new ArrayList<>(Arrays.asList(0));
         assertEquals(expected, result);
 
     }
-   
+
+    @Test
+    public void testForIndexNegative22GenerateFibonacciNumberSequence() {
+        Fibonacci test1 = new Fibonacci();
+
+        long expected = 0;
+        long result = test1.generateFibonacciSequence(-22);
+
+        assertEquals(expected, result);
+    }
+
+    @Test
+    public void testForIndex12GenerateFibonacciNumberSequence() {
+        Fibonacci test1 = new Fibonacci();
+
+        long expected = 144;
+        long result = test1.generateFibonacciSequence(12);
+
+        assertEquals(expected, result);
+    }
+
+    @Test
+    public void testForIndex54GenerateFibonacciNumberSequence() {
+        Fibonacci test1 = new Fibonacci();
+
+        long expected = 86267571272L;
+
+        long result = test1.generateFibonacciSequence(54);
+
+        assertEquals(expected, result);
+    }
 }

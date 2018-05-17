@@ -4,25 +4,29 @@ import java.util.List;
 
 public class Fibonacci {
     public static void main(String[] args) {
-
+        System.out.println(generateFibonacciSequence(12));
     }
 
-    public List<Integer> generateFibonacciSequence(int index){
-        List<Integer> fibonacciNumbersList = new ArrayList<>();
-
+    public static long generateFibonacciSequence(int index){
+        long fibonacciNumber = 0;
         if (index <= 0){
-            fibonacciNumbersList.add(0);
+            return fibonacciNumber;
         }
         else if (index == 1){
-            fibonacciNumbersList.addAll(Arrays.asList(0,1));
+            return fibonacciNumber = 1;
             }
         else{
-            fibonacciNumbersList.addAll(Arrays.asList(0,1));
-            for (int i = 2; i <index ; i++) {
-             fibonacciNumbersList.add(fibonacciNumbersList.get(i-2) +fibonacciNumbersList.get(i-1));
+            long fibonacciNumber0 =0;
+            long fibonacciNumber1 = 1;
+            for (int i = 2; i <= index ; i++) {
+             fibonacciNumber = fibonacciNumber0 + fibonacciNumber1;
+             fibonacciNumber0 = fibonacciNumber1;
+             fibonacciNumber1 = fibonacciNumber;
+
+
             }
         }
-        return fibonacciNumbersList;
+        return fibonacciNumber;
     }
 
 }

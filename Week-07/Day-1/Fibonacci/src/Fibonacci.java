@@ -1,6 +1,3 @@
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
 
 public class Fibonacci {
     public static void main(String[] args) {
@@ -13,7 +10,8 @@ public class Fibonacci {
             return fibonacciNumber;
         }
         else if (index == 1){
-            return fibonacciNumber = 1;
+            fibonacciNumber = 1;
+            return fibonacciNumber;
             }
         else{
             long fibonacciNumber0 =0;

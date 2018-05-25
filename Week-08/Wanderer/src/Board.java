@@ -6,28 +6,24 @@ import java.awt.event.KeyListener;
 
 
 public class Board extends JComponent implements KeyListener {
-
+    Map map = new Map();
+    Maze maze = new Maze();
     ListOfCharacters gameList = new ListOfCharacters();
 
     Hero me = new Hero();
 
+    Boss boss = new Boss(map);
 
     HordOfSkeletons hord = new HordOfSkeletons();
 
-
-
-    int testBoxX;
-    int testBoxY;
+    int counter = 0;
     int startingPointX = 0;
     int startingPointY = 0;
 
-    Map map = new Map();
-    Boss boss = new Boss(map);
+
+
 
     public Board() {
-        testBoxX = startingPointX;
-        testBoxY = startingPointY;
-
         // set the size of your draw board
         setPreferredSize(new Dimension(720, 720));
         setVisible(true);
@@ -41,19 +37,7 @@ public class Board extends JComponent implements KeyListener {
         // here you have a 720x720 canvas
         // you can create and draw an image using the class below e.g.
 
-        for (int i = startingPointX; i < 10; i ++) {
-            for (int j = startingPointY; j < 10; j ++) {
-                if (map.list[j][i] == 0) {
-                    PositionedImage image = new PositionedImage("./wanderer-java/img/floor.png", i*72, j*72);
-                    image.draw(graphics);
-                    }
-                    else {
-                        PositionedImage image = new PositionedImage("./wanderer-java/img/wall.png", i*72, j*72);
-                        image.draw(graphics);
-                        }
-                }
-            }
-
+        maze.drawMaze(map, graphics, startingPointX, startingPointY);
         me.drawCharacter(graphics);
 
         for (Skeleton skeleton: hord.lot) {
@@ -63,6 +47,7 @@ public class Board extends JComponent implements KeyListener {
         }
 
         Map disposableMap = new Map(gameList.theCharacters);
+
         boss.checkIfNotWall(disposableMap);
         boss.drawCharacter(graphics);
 
@@ -102,16 +87,43 @@ public class Board extends JComponent implements KeyListener {
     public void keyReleased(KeyEvent e) {
         // When the up or down keys hit, we change the position of our box
         if (e.getKeyCode() == KeyEvent.VK_UP) {
-           me.checkIfCanMoveUp(map);
+            Map upToDateMap = new Map(gameList.theCharacters);
+           me.checkIfCanMoveUp(upToDateMap);
+           counter++;
+           if (counter > 0 && counter % 2 == 0){
+               boss.move(map);
+               for (Skeleton skeleton:hord.lot) { skeleton.move(map);}
+           }
         } else if(e.getKeyCode() == KeyEvent.VK_DOWN) {
-            me.checkIfCanMoveDown(map);
+            Map upToDateMap = new Map(gameList.theCharacters);
+            me.checkIfCanMoveDown(upToDateMap);
+            counter++;
+            if (counter > 0 && counter % 2 == 0){
+                boss.move(map);
+                for (Skeleton skeleton:hord.lot) { skeleton.move(map);}
+            }
         }
         else if(e.getKeyCode() == KeyEvent.VK_LEFT) {
-            me.checkIfCanMoveLeft(map);
+            Map upToDateMap = new Map(gameList.theCharacters);
+            me.checkIfCanMoveLeft(upToDateMap);
+            counter++;
+            if (counter > 0 && counter % 2 == 0){
+                boss.move(map);
+                for (Skeleton skeleton:hord.lot) { skeleton.move(map);}
+            }
         }
         else if(e.getKeyCode() == KeyEvent.VK_RIGHT) {
-            me.checkIfCanMoveRight(map);
+            Map upToDateMap = new Map(gameList.theCharacters);
+            me.checkIfCanMoveRight(upToDateMap);
+            counter++;
+            if (counter > 0 && counter % 2 == 0){
+                boss.move(map);
+                for (Skeleton skeleton:hord.lot) { skeleton.move(map);}
+            }
         }
+
+
+
         // and redraw to have a new picture with the new coordinates
         repaint();
     }

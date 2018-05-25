@@ -1,8 +1,9 @@
 import java.awt.*;
 
-public class Monsters extends Character{
+public abstract class Monsters extends Character{
     int monsterX;
     int monsterY;
+
 
     public Monsters() {
     }
@@ -33,14 +34,25 @@ public class Monsters extends Character{
         return number;
     }
 
-
-    public void checkIfNotWall(Map map){
-
-
-
+    public void checkIfNotWall(Map map) {
         }
 
-    public void move(){
 
+    public boolean checkIfCanMove(Map map, int x, int y){
+        boolean canMove = false;
+
+        int i = (x)/72;
+        int j = (y)/72;
+
+        boolean checkIfOnBoardX = (x >=0) && (x < 720);
+        boolean checkIfOnBoardY = (y >=0) && (y < 720);
+
+        if (checkIfOnBoardX && checkIfOnBoardY && (map.list[j][i] == 0)){
+            canMove = true;
+        }
+        return canMove;
     }
+
+
+    public abstract void move(Map map);
 }

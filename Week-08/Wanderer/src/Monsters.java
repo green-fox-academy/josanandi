@@ -5,8 +5,22 @@ public class Monsters extends Character{
     int monsterY;
 
     public Monsters() {
-        this.monsterX = createRandomStartingPoint() * 72;
-        this.monsterY = createRandomStartingPoint() * 72;
+    }
+
+    public Monsters(Map map) {
+        boolean condition = false;
+
+        while (!condition){
+
+            int i = createRandomStartingPoint();
+            int j = createRandomStartingPoint();
+
+            if (map.list[j][i] == 0){
+                condition = true;
+                this.monsterX = i*72;
+                this.monsterY = j*72;
+            }
+        }
     }
 
     @Override
@@ -21,19 +35,7 @@ public class Monsters extends Character{
 
 
     public void checkIfNotWall(Map map){
-        boolean condition = false;
 
-        while (!condition){
-
-            int i = createRandomStartingPoint();
-            int j = createRandomStartingPoint();
-
-            if (map.list[j][i] == 0){
-                condition = true;
-                this.monsterX = i*72;
-                this.monsterY = j*72;
-                    }
-            }
 
 
         }

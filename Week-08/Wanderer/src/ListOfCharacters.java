@@ -5,6 +5,7 @@ public class ListOfCharacters {
     List<Character> theCharacters;
 
     public ListOfCharacters() {
+        theCharacters = new ArrayList<>();
     }
 
 

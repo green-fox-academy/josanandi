@@ -2,19 +2,18 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
-import java.util.ArrayList;
-import java.util.List;
+
 
 
 public class Board extends JComponent implements KeyListener {
 
-    //ListOfCharacters gameList = new ListOfCharacters();
+    ListOfCharacters gameList = new ListOfCharacters();
 
     Hero me = new Hero();
 
 
     HordOfSkeletons hord = new HordOfSkeletons();
-    Boss boss = new Boss();
+
 
 
     int testBoxX;
@@ -23,6 +22,7 @@ public class Board extends JComponent implements KeyListener {
     int startingPointY = 0;
 
     Map map = new Map();
+    Boss boss = new Boss(map);
 
     public Board() {
         testBoxX = startingPointX;
@@ -57,14 +57,19 @@ public class Board extends JComponent implements KeyListener {
         me.drawCharacter(graphics);
 
         for (Skeleton skeleton: hord.lot) {
-            skeleton.checkIfNotWall(map);
+            Map disposableMap = new Map(gameList.theCharacters);
+            skeleton.checkIfNotWall(disposableMap);
             skeleton.drawCharacter(graphics);
         }
 
-        boss.checkIfNotWall(map);
+        Map disposableMap = new Map(gameList.theCharacters);
+        boss.checkIfNotWall(disposableMap);
         boss.drawCharacter(graphics);
 
+
+
     }
+
 
     public static void main(String[] args) {
         // Here is how you set up a new window and adding our board to itq

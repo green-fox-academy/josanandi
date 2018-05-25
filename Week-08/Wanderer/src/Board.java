@@ -2,17 +2,25 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
+import java.util.ArrayList;
+import java.util.List;
 
 
 public class Board extends JComponent implements KeyListener {
 
+    //ListOfCharacters gameList = new ListOfCharacters();
+
     Hero me = new Hero();
-    Skeleton skel1 = new Skeleton();
+
+
+    HordOfSkeletons hord = new HordOfSkeletons();
+    Boss boss = new Boss();
+
 
     int testBoxX;
     int testBoxY;
     int startingPointX = 0;
-    int startingPointY =0;
+    int startingPointY = 0;
 
     Map map = new Map();
 
@@ -33,32 +41,33 @@ public class Board extends JComponent implements KeyListener {
         // here you have a 720x720 canvas
         // you can create and draw an image using the class below e.g.
 
-        int mapi;
-        int mapj = 0;
-        for (int i = startingPointX; i < 720; i += 72) {
-            mapi=0;
-            for (int j = startingPointY; j < 720; j += 72) {
-
-                if (map.list[mapi][mapj] == 0) {
-                    PositionedImage image = new PositionedImage("./wanderer-java/img/floor.png", i, j);
+        for (int i = startingPointX; i < 10; i ++) {
+            for (int j = startingPointY; j < 10; j ++) {
+                if (map.list[j][i] == 0) {
+                    PositionedImage image = new PositionedImage("./wanderer-java/img/floor.png", i*72, j*72);
                     image.draw(graphics);
                     }
                     else {
-                        PositionedImage image = new PositionedImage("./wanderer-java/img/wall.png", i, j);
+                        PositionedImage image = new PositionedImage("./wanderer-java/img/wall.png", i*72, j*72);
                         image.draw(graphics);
                         }
-                mapi++;
                 }
-                mapj++;
             }
+
         me.drawCharacter(graphics);
-        skel1.checkIfNotWallOrCharacter(map);
-        skel1.drawCharacter(graphics);
+
+        for (Skeleton skeleton: hord.lot) {
+            skeleton.checkIfNotWall(map);
+            skeleton.drawCharacter(graphics);
+        }
+
+        boss.checkIfNotWall(map);
+        boss.drawCharacter(graphics);
 
     }
 
     public static void main(String[] args) {
-        // Here is how you set up a new window and adding our board to it
+        // Here is how you set up a new window and adding our board to itq
         JFrame frame = new JFrame("RPG Game");
         Board board = new Board();
         frame.add(board);

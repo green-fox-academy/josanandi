@@ -8,12 +8,12 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 public class HelloRESTController {
-
+    Greeting object =  new Greeting( "Hello, Andi!");
     @RequestMapping(value = "/greeting", method = RequestMethod.GET)
     public Greeting greeting(
             @RequestParam(value ="name", required = false) String name)
     {
-        Greeting object =  new Greeting(1, "Hello, Andi!");
+        object.incrementCount();
         return object;
     }
 }

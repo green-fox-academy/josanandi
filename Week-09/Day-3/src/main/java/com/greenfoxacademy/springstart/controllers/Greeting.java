@@ -3,31 +3,32 @@ package com.greenfoxacademy.springstart.controllers;
 import java.util.concurrent.atomic.AtomicLong;
 
 public class Greeting {
-    private long id;
+    private AtomicLong id;
     private String controller;
 
     public Greeting(){
 
     }
 
-    public Greeting(long id, String controller) {
-        this.id = id;
+    public Greeting( String controller) {
+        this.id = new AtomicLong(0);
         this.controller = controller;
     }
 
     public long getId() {
-        return id;
+        return id.get();
     }
 
     public String getController() {
         return controller;
     }
 
-    public void setId(long id) {
-        this.id = id;
+    public void incrementCount() {
+        id.incrementAndGet();
     }
-
     public void setController(String controller) {
         this.controller = controller;
     }
 }
+
+

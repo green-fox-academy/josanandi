@@ -11,7 +11,7 @@ public class HelloRESTController {
     Greeting object =  new Greeting( "Hello, Andi!");
     @RequestMapping(value = "/greeting", method = RequestMethod.GET)
     public Greeting greeting(
-            @RequestParam(value ="name", required = false) String name)
+            @RequestParam(value ="name", required = false) String Andi)
     {
         object.incrementCount();
         return object;

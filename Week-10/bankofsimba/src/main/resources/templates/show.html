@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Show Account</title>
+</head>
+<body>
+    <h2 >The account name is <span th:text="${account.name}"></span></h2>
+    <p>The actual balance of this account is <span th:text="|${accountBalance} Zebras|"></span></p>
+    <p>The animal type for this account is <span th:text="${account.animalType}"></span></p>
+
+</body>
+</html>

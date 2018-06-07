@@ -16,4 +16,11 @@ public class WebControllerShow {
         model.addAttribute("accountBalance", String.format("%,.2f", account.getBalance()));
         return "show";
     }
+
+    @GetMapping("htmlception")
+    public String htmlCeption(Model model){
+        String textPart= "This is an <em>HTML</em> text. <b>Enjoy yourself!</b>";
+        model.addAttribute("text", textPart);
+        return "htmlception";
+    }
 }

@@ -7,14 +7,20 @@
 <body>
 <table style="width:50%; height:300px; font-size: large">
     <tr style="background-color:pink">
-          <th>NAME</th>
-             <th>BALANCE</th>
-            <th>TYPE</th>
+        <th>NAME</th>
+        <th>BALANCE</th>
+        <th>TYPE</th>
+        <th>INDEX</th>
+        <th>OWNER</th>
+
       </tr>
       <tr th:each="currentAccount : ${accounts}" style="background-color:lightgray" align="center">
           <td th:text="${currentAccount.name}"></td>
           <td th:text="${currentAccount.balance}"></td>
           <td th:text="${currentAccount.animalType}"></td>
+          <td th:text="${currentAccountStat.index}"></td>
+          <td th:if="${currentAccount.isKing()}" style="color:darkgoldenrod; font-weight:bold ">King</td>
+          <td th:unless="${currentAccount.isKing()}">Not King</td>
         </tr>
     </table>
 </body>

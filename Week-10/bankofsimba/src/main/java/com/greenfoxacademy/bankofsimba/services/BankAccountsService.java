@@ -18,6 +18,11 @@ public class BankAccountsService implements BankService {
         list.add(new BankAccount("Scar", 4000.00, "lion"));
         list.add(new BankAccount("Timon", 50.00, "meerkat"));
         list.add(new BankAccount("Pumbaa", 1000.00, "warthdog"));
+        for (BankAccount account:list) {
+            if (account.getName() == "Simba"){
+                account.setKing(true);
+            }
+        }
     }
 
     @Override

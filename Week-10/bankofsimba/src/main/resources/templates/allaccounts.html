@@ -12,6 +12,7 @@
         <th>TYPE</th>
         <th>INDEX</th>
         <th>OWNER</th>
+        <th>CHARACTER</th>
 
       </tr>
       <tr th:each="currentAccount : ${accounts}" style="background-color:lightgray" align="center">
@@ -19,8 +20,12 @@
           <td th:text="${currentAccount.balance}"></td>
           <td th:text="${currentAccount.animalType}"></td>
           <td th:text="${currentAccountStat.index}"></td>
-          <td th:if="${currentAccount.isKing()}" style="color:darkgoldenrod; font-weight:bold ">King</td>
+          <td th:if="${currentAccount.isKing()}" style="color:palegold  enrod; font-weight:bold; background-color:darkslateblue ">King</td>
           <td th:unless="${currentAccount.isKing()}">Not King</td>
+          <div th:switch="${currentAccount.isGoodGuy()}">
+              <td th:case="true">Good Guy</td>
+              <td th:case="false">Bad Guy</td>
+          </div>
         </tr>
     </table>
 </body>

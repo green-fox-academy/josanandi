@@ -18,7 +18,7 @@ public class WebController {
     public WebController(BankService bankService) {
         this.bankService = bankService;
            }
-    BankAccount account = new BankAccount("Simba", 2000.00, "lion");
+    BankAccount account = new BankAccount("Simba", 2000.00, "lion", true);
 
     @GetMapping("show")
     public String showAccount( Model model){

@@ -14,8 +14,8 @@ public class BankAccount {
         this.name = name;
         this.balance = balance;
         this.animalType = animalType;
-        this.isKing = false;
         this.isGoodGuy = isGoodGuy;
+        this.isKing = false;
 
     }
 

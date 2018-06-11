@@ -11,7 +11,7 @@ public interface BankService {
 
     ArrayList<BankAccount> getAllAcccount();
 
-    ArrayList<String> getAllAcccountNames();
-
     public void raiseBalance(BankAccount account);
+
+    public void createNewAccount(String name);
 }

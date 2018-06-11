@@ -35,14 +35,6 @@ public class BankAccountsService implements BankService {
         return list;
     }
 
-    @Override
-    public ArrayList<String> getAllAcccountNames() {
-        ArrayList<String> namelist= new ArrayList<>();
-        for (BankAccount listaccount: list) {
-            namelist.add(listaccount.getName());
-        }
-        return namelist;
-    }
 
     @Override
     public void raiseBalance(BankAccount account) {
@@ -56,5 +48,10 @@ public class BankAccountsService implements BankService {
                }
            }
         }
+    }
+
+    @Override
+    public void createNewAccount(String name) {
+        list.add(new BankAccount(name, 1000, "lion", true));
     }
 }

@@ -17,11 +17,10 @@ import java.util.List;
 public class WebController {
     private final BankService bankService;
 
-
-
     @Autowired
     public WebController(BankService bankService) {
         this.bankService = bankService;
+        this.bankService.create();
            }
     BankAccount account = new BankAccount("Simba", 2000.00, "lion", true);
 
@@ -47,18 +46,30 @@ public class WebController {
 
     @RequestMapping("form")
     public String getForm(Model model){
-        bankService.create();
         model.addAttribute("accounts", bankService.getAllAcccount());
         return "form";
 
     }
     @PostMapping(value = "allaccounts")
     public String postForm(@ModelAttribute(value="account") BankAccount account){
-        bankService.create();
         bankService.raiseBalance(account);
         return "redirect:/allaccounts";
 
     }
 
+    @RequestMapping("newaccount")
+    public String newAccountCreation(Model model){
+        return "newaccount";
+    }
 
+    @PostMapping(value = "addnewaccount")
+    public String creatNewAccountForm(@ModelAttribute(value="name") String name,
+                                      @ModelAttribute(value="balance") double balance,
+                                      @ModelAttribute(value="animalType") String animalType,
+                                      @ModelAttribute(value="isGoodGuy") boolean isGoodGuy){
+        System.out.println(name);
+        bankService.add(new BankAccount(name, balance, animalType, isGoodGuy));
+        return "redirect:/allaccounts";
+
+    }
 }

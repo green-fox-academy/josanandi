@@ -19,6 +19,10 @@ public class BankAccount {
 
     }
 
+    public void setBalance(double balance) {
+        this.balance = balance;
+    }
+
     public String getName() {
         return name;
     }
@@ -35,9 +39,6 @@ public class BankAccount {
         this.name = name;
     }
 
-    public void setBalance(long balance) {
-        this.balance = balance;
-    }
 
     public void setAnimalType(String animalType) {
         this.animalType = animalType;
@@ -51,6 +52,7 @@ public class BankAccount {
         isKing = king;
     }
 
+
     public boolean isGoodGuy() {
         return isGoodGuy;
     }
@@ -58,4 +60,5 @@ public class BankAccount {
     public void setGoodGuy(boolean goodGuy) {
         isGoodGuy = goodGuy;
     }
+
 }

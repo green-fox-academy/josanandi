@@ -34,4 +34,27 @@ public class BankAccountsService implements BankService {
     public ArrayList<BankAccount> getAllAcccount() {
         return list;
     }
+
+    @Override
+    public ArrayList<String> getAllAcccountNames() {
+        ArrayList<String> namelist= new ArrayList<>();
+        for (BankAccount listaccount: list) {
+            namelist.add(listaccount.getName());
+        }
+        return namelist;
+    }
+
+    @Override
+    public void raiseBalance(BankAccount account) {
+        for (BankAccount listAccount: this.list) {
+           if(listAccount.getName().equals(account.getName())){
+               if (listAccount.isKing()){
+                   listAccount.setBalance(listAccount.getBalance()+100);
+               }
+               else{
+                   listAccount.setBalance(listAccount.getBalance()+10);
+               }
+           }
+        }
+    }
 }

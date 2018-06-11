@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Show Account</title>
+</head>
+<body>
+<form name='name' th:object="${accounts}" action="#" th:action="@{/allaccounts}" method='POST'>
+    <div>
+        <div>Select name: </div>
+    <select  class="form-control" id="name" name="name" >
+        <option value=""> -- </option>
+        <option th:each="account: ${accounts}"
+                th:value ="${account.name}"
+                th:text="${account.name}"
+                th:select="${account.name}">
+
+        </option>
+
+    </select>
+    </div>
+    <button th:type="submit" name="submit" value="submit ">Submit</button>
+
+</form>
+
+</body>
+</html>

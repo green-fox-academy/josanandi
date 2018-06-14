@@ -30,4 +30,12 @@ public class Webcontroller {
         model.addAttribute("email", email);
         return "email";
     }
+    @GetMapping("useful/caesarendecoding")
+    public String caesarEnDecoding(Model model, @RequestParam(value ="text", required = false) String text,
+                                   @RequestParam(value ="number", required = false) Integer number) {
+        model.addAttribute("result", color.caesar(text, number));
+        model.addAttribute("text", text);
+        model.addAttribute("number", number);
+        return "caesarendecoding";
+    }
 }

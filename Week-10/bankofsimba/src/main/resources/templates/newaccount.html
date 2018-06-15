@@ -7,11 +7,11 @@
 <body>
 <form name='New account' action="#" th:action="@{/addnewaccount}" method='POST'>
     <div>
-        <div>Enter data: </div>
+        <div>Enter data</div>
         <div>
             <label for="name">Name:</label>
             <input type="text" id="name" name="name" />
-        </div>
+
         <div>
             <label for="balance">Balance:</label>
             <input type="number" id="balance" name="balance" />
@@ -27,9 +27,6 @@
                 <option th:value="false">Bad Guy</option>
             </select>
         </div>
-
-
-
 
     </div>
     <button th:type="submit" name="submit" value="submit ">Submit</button>

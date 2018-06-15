@@ -1,6 +1,6 @@
-package com.greenfoxacademy.diexercise.controller;
+package com.greenfoxacademy.diexercise.Print_Coloring_UsefulUtilities.controller;
 
-import com.greenfoxacademy.diexercise.service.UtilityService;
+import com.greenfoxacademy.diexercise.Print_Coloring_UsefulUtilities.controller.service.UtilityService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;

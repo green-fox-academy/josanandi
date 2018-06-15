@@ -1,4 +1,4 @@
-package com.greenfoxacademy.diexercise.service;
+package com.greenfoxacademy.diexercise.Print_Coloring_UsefulUtilities.controller.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;

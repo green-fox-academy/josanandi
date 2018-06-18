@@ -7,9 +7,22 @@
 <body>
 <h1>Todos for Today:</h1>
 
-<ul th:each="todo:${todos}" >
-    <li th:text="${todo.title}"></li>
-</ul>
+<table style="width:50%; height:300px; font-size: large">
+    <tr style="background-color:pink">
+        <th>TITLE</th>
+        <th>DONE</th>
+        <th>URGENT</th>
+
+
+    </tr>
+    <tr th:each="todo : ${todos}" style="background-color:lightgray" align="center">
+        <td th:text="${todo.title}"></td>
+        <td th:if="${todo.done}" th:text="X"></td>
+        <td th:unless="${todo.done}" ></td>
+        <td th:if="${todo.urgent}" th:text="X"></td>
+        <td th:unless="${todo.urgent}" ></td>
+
+</table>
 
 </body>
 </html>

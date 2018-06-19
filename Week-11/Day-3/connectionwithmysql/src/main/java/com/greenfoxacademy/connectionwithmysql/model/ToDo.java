@@ -12,6 +12,28 @@ import javax.persistence.Id;
     @Entity
 
     public class ToDo {
+        @Id
+        @GeneratedValue
+        private Long id;
+        private String title;
+        private Boolean urgent;
+        private Boolean done;
+
+        public ToDo(String title, Boolean urgent, Boolean done) {
+            this.title = title;
+            this.urgent = urgent;
+            this.done = done;
+        }
+
+        public ToDo(String title) {
+            this.title = title;
+            this.urgent = false;
+            this.done = false;
+        }
+
+        public ToDo() {
+        }
+
         public void setId(Long id) {
             this.id = id;
         }
@@ -43,21 +65,4 @@ import javax.persistence.Id;
         public Boolean getDone() {
             return done;
         }
-
-        @Id
-        @GeneratedValue
-        private Long id;
-        private String title;
-        private Boolean urgent;
-        private Boolean done;
-
-        public ToDo(String title, Boolean urgent, Boolean done) {
-            this.title = title;
-            this.urgent = urgent;
-            this.done = done;
-        }
-
-        public ToDo() {
-        }
-
     }

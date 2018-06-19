@@ -23,4 +23,8 @@ public class ServiceToDo {
         return (List<ToDo>) toDoRepository.findAll();
 
     }
+
+    public void add(ToDo toDo) {
+        toDoRepository.save(toDo);
+    }
 }

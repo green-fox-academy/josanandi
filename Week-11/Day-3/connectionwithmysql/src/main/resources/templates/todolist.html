@@ -15,6 +15,7 @@
         <th>TITLE</th>
         <th>DONE</th>
         <th>URGENT</th>
+        <th>OBSOLETE</th>
 
 
     </tr>
@@ -25,6 +26,7 @@
         <td th:unless="${todo.done}" ></td>
         <td th:if="${todo.urgent}" th:text="X"></td>
         <td th:unless="${todo.urgent}" ></td>
+        <td><a th:href="@{'/{id}/delete' (id=${todo.id})}" >delete</a></td>
 
 </table>
 

@@ -25,9 +25,6 @@ public class ServiceButterfly {
        butterfly = new Butterfly(name);
        return butterfly;
     }
-    public ListOfButterflies getButterfliesList(){
-        return listOfButterflies;
-    }
 
     public void addToList(Butterfly butterfly){
         listOfButterflies.addButterflies(butterfly);
@@ -42,14 +39,5 @@ public class ServiceButterfly {
         }
         return actual;
     }
-
-
-    public void updateToList(Butterfly actual) {
-        List<Butterfly> existingButterflies = listOfButterflies.getButterflies();
-        for (int i = 0; i <existingButterflies.size() ; i++) {
-            if(actual.getName().equals(existingButterflies.get(i).getName())){
-                existingButterflies.set(i, actual);
-            }
-        }
-    }
+    
 }

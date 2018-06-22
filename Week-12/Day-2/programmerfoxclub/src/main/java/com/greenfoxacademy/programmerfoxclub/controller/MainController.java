@@ -5,13 +5,10 @@ import com.greenfoxacademy.programmerfoxclub.models.Drink;
 import com.greenfoxacademy.programmerfoxclub.models.Food;
 import com.greenfoxacademy.programmerfoxclub.models.ListOfButterflies;
 import com.greenfoxacademy.programmerfoxclub.services.ServiceButterfly;
-import org.hibernate.validator.constraints.pl.REGON;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.bind.support.SessionStatus;
-
 @Controller
 public class MainController {
     ServiceButterfly serviceButterfly;
@@ -60,7 +57,6 @@ public class MainController {
     }
     @GetMapping("/nutritionstore")
     public String getNutritionStore(@RequestParam( value = "name", required = false) String name, Model model) {
-        Butterfly actual;
         if (name == null) {
             return "login";
         } else {
@@ -78,7 +74,7 @@ public class MainController {
     public String getFoodAndDrink( @ModelAttribute(value = "name") String name,
                                    @ModelAttribute(value = "food") String food,
                                    @ModelAttribute(value = "drink") String drink) {
-        
+
         Butterfly actual = serviceButterfly.getButterflyByName(name);
         actual.setFood(food);
         actual.setDrink(drink);

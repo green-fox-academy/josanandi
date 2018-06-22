@@ -6,7 +6,8 @@
 </head>
 <body>
     <ul>
-        <LI><a href="">Information</a></LI>
+        <LI><a th:href="@{'/?name=' + ${name}}">Infomation</a></LI>
+        <LI><a th:href="@{'/nutritionstore?name=' + ${name}}">Nutrition Store</a></LI>
     </ul>
 
     <img src="butterfly.png "/>

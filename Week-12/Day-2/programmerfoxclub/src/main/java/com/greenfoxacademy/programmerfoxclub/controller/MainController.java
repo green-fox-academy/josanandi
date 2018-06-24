@@ -1,14 +1,14 @@
 package com.greenfoxacademy.programmerfoxclub.controller;
 
-import com.greenfoxacademy.programmerfoxclub.models.Butterfly;
-import com.greenfoxacademy.programmerfoxclub.models.Drink;
-import com.greenfoxacademy.programmerfoxclub.models.Food;
-import com.greenfoxacademy.programmerfoxclub.models.ListOfButterflies;
+import com.greenfoxacademy.programmerfoxclub.models.*;
 import com.greenfoxacademy.programmerfoxclub.services.ServiceButterfly;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
+
 @Controller
 public class MainController {
     ServiceButterfly serviceButterfly;
@@ -78,6 +78,34 @@ public class MainController {
         Butterfly actual = serviceButterfly.getButterflyByName(name);
         actual.setFood(food);
         actual.setDrink(drink);
+
+        return "redirect:/?name=" + name;
+    }
+
+    @GetMapping("/trickcenter")
+    public String getTrickCenter(@RequestParam( value = "name", required = false) String name, Model model) {
+        if (name == null) {
+            return "login";
+        } else {
+            model.addAttribute("name", name);
+            Butterfly actual = serviceButterfly.getButterflyByName(name);
+            List<String> actualTrickList = actual.addOnlyTheUknowTricks();
+            if (actualTrickList.isEmpty()) {
+                return "notricks";
+            } else {
+                model.addAttribute("tricks", actualTrickList);
+            }
+
+            return "trickcenter";
+        }
+    }
+
+    @PostMapping("/tricklearn")
+    public String learnTricks( @ModelAttribute(value = "name") String name,
+                               @ModelAttribute(value = "trick") String trick){
+
+        Butterfly actual = serviceButterfly.getButterflyByName(name);
+        actual.addTrick(trick);
 
         return "redirect:/?name=" + name;
     }

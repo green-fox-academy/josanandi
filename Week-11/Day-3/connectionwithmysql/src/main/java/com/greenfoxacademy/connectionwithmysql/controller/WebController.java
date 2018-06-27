@@ -50,6 +50,19 @@ public class WebController {
         return "redirect:/list";
     }
 
+    @GetMapping(value = "/{id}/edit")
+    public String editToDo(@PathVariable("id") Long idx, Model model){
+        ToDo actual = serviceToDo.findTodoById(idx);
+        model.addAttribute("toDo", actual);
+        return "edit";
+    }
+
+    @PostMapping(value = "/{id}/post")
+    public String editPostToDo(@PathVariable("id") Long idx, @ModelAttribute("toDo") ToDo toDo){
+        toDo.setId(idx);
+        serviceToDo.edit(toDo);
+        return "redirect:/list";
+    }
 
 
 }

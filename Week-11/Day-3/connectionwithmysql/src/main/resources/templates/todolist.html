@@ -16,6 +16,7 @@
         <th>DONE</th>
         <th>URGENT</th>
         <th>OBSOLETE</th>
+        <th>EDIT</th>
 
 
     </tr>
@@ -27,6 +28,7 @@
         <td th:if="${todo.urgent}" th:text="X"></td>
         <td th:unless="${todo.urgent}" ></td>
         <td><a th:href="@{'/{id}/delete' (id=${todo.id})}" >delete</a></td>
+        <td><a th:href="@{'/{id}/edit' (id=${todo.id})}" >edit</a></td>
 
 </table>
 

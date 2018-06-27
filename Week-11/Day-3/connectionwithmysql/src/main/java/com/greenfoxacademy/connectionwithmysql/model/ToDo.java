@@ -65,4 +65,16 @@ import javax.persistence.Id;
         public Boolean getDone() {
             return done;
         }
+
+        public Boolean isUrgent() {
+            Boolean condition = false;
+            if (this.urgent ) { condition = true;}
+            return condition;
+        }
+
+        public Boolean isDone() {
+            Boolean condition = false;
+            if (this.done ) { condition = true;}
+            return condition;
+        }
     }

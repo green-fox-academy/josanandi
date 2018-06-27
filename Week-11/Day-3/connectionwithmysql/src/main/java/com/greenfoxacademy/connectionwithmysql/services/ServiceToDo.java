@@ -37,4 +37,8 @@ public class ServiceToDo {
     public void remove(Long idx) {
         toDoRepository.deleteById(idx);
     }
+
+    public void edit(ToDo toDo) {
+        toDoRepository.save(toDo);
+    }
 }

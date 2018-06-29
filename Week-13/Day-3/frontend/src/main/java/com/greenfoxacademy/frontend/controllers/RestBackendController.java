@@ -1,6 +1,7 @@
 package com.greenfoxacademy.frontend.controllers;
 
 import com.greenfoxacademy.frontend.models.Error;
+import com.greenfoxacademy.frontend.models.Greeter;
 import com.greenfoxacademy.frontend.models.Result;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -18,4 +19,18 @@ public class RestBackendController {
             return new Result(input);
         }
     }
+
+    @GetMapping("/greeter")
+    public Object getGreeter(@RequestParam(required = false) String name, @RequestParam(required = false) String title){
+        if (name == null ){
+            return new Error("Please provide a name!");
+        }
+        else if (title == null){
+            return new Error("Please provide a title!");
+        }
+        else{
+            return new Greeter(name, title);
+        }
+    }
+
 }

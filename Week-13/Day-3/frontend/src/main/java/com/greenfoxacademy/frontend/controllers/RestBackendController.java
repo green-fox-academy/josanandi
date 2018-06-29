@@ -1,9 +1,11 @@
 package com.greenfoxacademy.frontend.controllers;
 
+import com.greenfoxacademy.frontend.models.AppendA;
 import com.greenfoxacademy.frontend.models.Error;
 import com.greenfoxacademy.frontend.models.Greeter;
 import com.greenfoxacademy.frontend.models.Result;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -32,5 +34,17 @@ public class RestBackendController {
             return new Greeter(name, title);
         }
     }
+
+    @GetMapping("/appenda/{appendable}")
+    public Object getGreeter(@PathVariable(required = false) String appendable){
+        if (appendable == null ){
+            return "/anotherendpoint";
+        }
+        else{
+            return new AppendA(appendable);
+        }
+    }
+
+
 
 }

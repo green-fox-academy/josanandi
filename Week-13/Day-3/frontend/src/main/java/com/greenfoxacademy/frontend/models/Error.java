@@ -4,7 +4,7 @@ import org.springframework.stereotype.Component;
 
 @Component
 public class Error {
-    String error;
+    private String error;
 
     public Error() {
     }
@@ -13,11 +13,11 @@ public class Error {
         this.error = error;
     }
 
-    public String getMessage() {
+    public String getError() {
         return error;
     }
 
-    public void setMessage(String error) {
-        this.error =error;
+    public void setError(String error) {
+        this.error = error;
     }
 }

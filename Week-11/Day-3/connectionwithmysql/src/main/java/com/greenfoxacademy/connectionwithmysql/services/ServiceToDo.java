@@ -1,44 +1,18 @@
 package com.greenfoxacademy.connectionwithmysql.services;
 
 import com.greenfoxacademy.connectionwithmysql.model.ToDo;
-import com.greenfoxacademy.connectionwithmysql.repository.ToDoRepository;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.Optional;
 
 @Service
-public class ServiceToDo {
-    ToDoRepository toDoRepository;
-    @Autowired
-    public ServiceToDo(ToDoRepository toDoRepository) {
-        this.toDoRepository = toDoRepository;
-    }
+public interface ServiceToDo {
 
-    public List<ToDo> findActiveTasks(){
-        return (List<ToDo>) toDoRepository.findAllByDone(false);
-
-    }
-    public List<ToDo> findAll(){
-        return (List<ToDo>) toDoRepository.findAll();
-
-    }
-
-    public void add(ToDo toDo) {
-        toDoRepository.save(toDo);
-    }
-
-
-    public ToDo findTodoById(Long id) {
-        return toDoRepository.findById(id).get();
-    }
-
-    public void remove(Long idx) {
-        toDoRepository.deleteById(idx);
-    }
-
-    public void edit(ToDo toDo) {
-        toDoRepository.save(toDo);
-    }
+    List<ToDo> findActiveTasks();
+    List<ToDo> findAll();
+    void add(ToDo toDo);
+    ToDo findTodoById(Long id);
+    void remove(Long idx);
+    void edit(ToDo toDo);
+    List<ToDo> findAllByTitle(String title);
 }

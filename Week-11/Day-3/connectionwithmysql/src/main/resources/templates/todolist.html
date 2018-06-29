@@ -6,7 +6,15 @@
 </head>
 <body>
 <h1>Todos for Today:</h1>
+<form name='Search' action="#" th:action="@{/search}" method='POST'>
 
+    <label for="search">Search:</label>
+    <input type="text" id="search" name="search" />
+
+    <button th:type="submit" name="submit" value="submit ">Submit</button>
+
+
+</form>
 <h3><a th:href="@{add}">Add new todo</a></h3>
 
 <table style="width:50%; height:300px; font-size: large">

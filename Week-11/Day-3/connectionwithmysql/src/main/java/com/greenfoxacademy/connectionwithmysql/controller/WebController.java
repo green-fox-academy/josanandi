@@ -75,6 +75,11 @@ public class WebController {
         return "redirect:/searchresults/?search=" + search;
     }
 
+    @GetMapping("/assigneelist")
+    public String getAssigneelist(){
+        return "/assigneelist";
+    }
+
 
 }
 

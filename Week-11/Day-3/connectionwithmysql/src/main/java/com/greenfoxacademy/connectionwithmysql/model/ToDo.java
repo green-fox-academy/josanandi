@@ -31,8 +31,6 @@ import javax.persistence.Id;
             this.done = false;
         }
 
-        public ToDo() {
-        }
 
         public void setId(Long id) {
             this.id = id;

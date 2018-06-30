@@ -41,14 +41,14 @@ public class RestBackendController {
     }
 
     @PostMapping ("/dountil/{what}")
-    public Object doUntilGenarator(@RequestParam(required = false) Integer until, @PathVariable("what") String what){
+    public Object doUntilGenarator(@RequestBody(required = false) Until until, @PathVariable("what") String what){
         if (until == null){
             return new Error("Please provide a number!");
         }
         else{
-            DoUntil klari = new DoUntil(until, what);
-            klari.setResult(what);
-            return klari;
+            DoUntil doUntil = new DoUntil(what);
+            doUntil.setResult(until, what);
+            return doUntil;
 
        }
        

@@ -4,31 +4,29 @@ import org.springframework.stereotype.Component;
 
 @Component
 public class DoUntil {
-    private Integer until;
-    private Integer result;
+    private Long result;
 
     public DoUntil() {
     }
 
-    public DoUntil(Integer until, String input) {
-        this.until = until;
+    public DoUntil( String input) {
         if (input.equals("sum")){
-          this.result = 0;
+          this.result = 0L;
         }
         else if (input.equals("factor")){
-           this.result = 1;
+           this.result = 1L;
         }
 
     }
 
-    public void setResult(String input) {
+    public void setResult(Until until, String input) {
         if (input.equals("sum")){
-            for (int i = 0; i <= until ; i++) {
+            for (int i = 0; i <= until.getUntil() ; i++) {
                 this.result += i;
             }
         }
         else if (input.equals("factor")){
-            for (int i = 1; i <= until ; i++) {
+            for (int i = 1; i <= until.getUntil() ; i++) {
                 this.result *= i;
             }
         }
@@ -36,4 +34,8 @@ public class DoUntil {
     }
 
 
+
+    public Long getResult() {
+        return result;
+    }
 }

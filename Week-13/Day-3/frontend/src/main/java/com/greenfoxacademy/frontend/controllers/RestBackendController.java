@@ -1,13 +1,8 @@
 package com.greenfoxacademy.frontend.controllers;
 
-import com.greenfoxacademy.frontend.models.AppendA;
+import com.greenfoxacademy.frontend.models.*;
 import com.greenfoxacademy.frontend.models.Error;
-import com.greenfoxacademy.frontend.models.Greeter;
-import com.greenfoxacademy.frontend.models.Result;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 public class RestBackendController {
@@ -45,6 +40,19 @@ public class RestBackendController {
         }
     }
 
+    @PostMapping ("/dountil/{what}")
+    public Object doUntilGenarator(@RequestParam(required = false) Integer until, @PathVariable("what") String what){
+        if (until == null){
+            return new Error("Please provide a number!");
+        }
+        else{
+            DoUntil klari = new DoUntil(until, what);
+            klari.setResult(what);
+            return klari;
+
+       }
+       
+    }
 
 
 }

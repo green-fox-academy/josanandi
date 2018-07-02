@@ -49,10 +49,27 @@ public class RestBackendController {
             DoUntil doUntil = new DoUntil(what);
             doUntil.setResult(until, what);
             return doUntil;
-
        }
-       
     }
 
+    @PostMapping("/arrays")
+    public Object arrayHandler(@RequestBody(required = false) ArraySender arraySender ){
+        if (arraySender == null){
+            return new Error("Please provide what to do with the numbers!");
+        }
+        else if (arraySender.getWhat().equals("double")){
+            ResultArray resultArray = new ResultArray(arraySender);
+            resultArray.setResult(arraySender);
+            return resultArray.getResultlist();
+
+        }
+        else {
+            ResultArray resultArray = new ResultArray(arraySender);
+            resultArray.setResult(arraySender);
+            return resultArray.getResult();
+
+        }
+
+    }
 
 }

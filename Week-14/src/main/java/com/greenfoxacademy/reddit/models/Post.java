@@ -37,4 +37,16 @@ public class Post {
     public void setTimeStamp(LocalDateTime now) {
         this.timestamp = now;
     }
+
+    public Long getScore() {
+        return this.score;
+    }
+
+    public void setScoreUpvote() {
+        this.score += 1;
+    }
+
+    public void setScoreDownVote() {
+        this.score -= 1;
+    }
 }

@@ -1,20 +1,18 @@
 package com.greenfoxacademy.reddit.models;
 
 
-import lombok.AllArgsConstructor;
 import lombok.Getter;
-import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import java.time.LocalDateTime;
 import java.util.Date;
 
 @Getter
 @Setter
-@NoArgsConstructor
-@AllArgsConstructor
+
 @Entity
 public class Post {
 
@@ -23,8 +21,16 @@ public class Post {
     private Long id;
     private String title;
     private String url;
-    private Date timestamp;
+    private LocalDateTime timestamp;
     private Long score;
 
+    public Post(String title, String url, Date timestamp, Long score) {
+        this.title = title;
+        this.url = url;
+        this.timestamp = LocalDateTime.now();
+        this.score = score;
+    }
 
+    public Post() {
+    }
 }

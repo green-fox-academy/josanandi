@@ -6,4 +6,6 @@ import java.util.List;
 
 public interface PostServices {
     List<Post> getAllPosts();
+
+    void add(Post newPost);
 }

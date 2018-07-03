@@ -33,4 +33,8 @@ public class Post {
 
     public Post() {
     }
+
+    public void setTimeStamp(LocalDateTime now) {
+        this.timestamp = now;
+    }
 }

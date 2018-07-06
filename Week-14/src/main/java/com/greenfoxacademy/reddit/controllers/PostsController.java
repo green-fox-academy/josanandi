@@ -38,18 +38,21 @@ public class PostsController {
 
     @PutMapping("/posts/{id}/upvote")
     public List<Vote> upvotePost(@PathVariable Long id, @RequestHeader("username") String username){
-        voteServices.addUpvote(username);
         Post actualPost = postServices.getPostById(id);
         actualPost.setScoreUpvote();
+        Vote vote = new Vote(username);
+        vote.setVoteUpvote();
+        actualPost.votelist.add(vote);
         postServices.add(actualPost);
         return voteServices.getAllVotes();
     }
 
     @PutMapping("/posts/{id}/downvote")
     public List<Post> downvotePost(@PathVariable Long id, @RequestHeader("username") String username){
-        voteServices.addDownVote(username);
         Post actualPost = postServices.getPostById(id);
         actualPost.setScoreDownVote();
+        Vote vote = new Vote(username);
+        vote.setVoteDownvote();
         postServices.add(actualPost);
         return postServices.getAllPosts();
     }

@@ -37,4 +37,5 @@ public class Vote {
     public void setVoteDownvote() {
         this.vote -= 1;
     }
+
 }

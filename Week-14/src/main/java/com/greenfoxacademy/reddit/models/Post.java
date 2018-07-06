@@ -26,17 +26,16 @@ public class Post {
     private String owner;
 
     @ManyToMany(cascade = CascadeType.ALL)
-    @JoinColumn(name = "post_id")
-    public List<Vote> vote;
+    public List<Vote> votelist = new ArrayList<>();
 
     public Post() {
         this.timestamp = LocalDateTime.now();
         this.score = 0L;
-        vote = new ArrayList<>();
     }
 
-
-
+    public void addVote(Vote vote){
+        votelist.add(vote);
+    }
     public void setTimeStamp(LocalDateTime now) {
         this.timestamp = now;
     }

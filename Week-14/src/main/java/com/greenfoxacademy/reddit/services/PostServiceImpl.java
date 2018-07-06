@@ -27,7 +27,6 @@ public class PostServiceImpl implements PostServices {
 
     @Override
     public void add(Post newPost) {
-        newPost.setTimeStamp(LocalDateTime.now());
         postRepository.save(newPost);
     }
 

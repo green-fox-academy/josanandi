@@ -1,21 +1,21 @@
 package com.greenfoxacademy.reddit.models;
 
 
+import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.Setter;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
+@AllArgsConstructor
 @Getter
 @Setter
-
 @Entity
 public class Post {
-
     @Id
     @GeneratedValue
     private Long id;
@@ -23,24 +23,24 @@ public class Post {
     private String url;
     private LocalDateTime timestamp;
     private Long score;
+    private String owner;
 
-    public Post(String title, String url, Date timestamp, Long score) {
-        this.title = title;
-        this.url = url;
-        this.timestamp = LocalDateTime.now();
-        this.score = score;
-    }
+    @ManyToMany(cascade = CascadeType.ALL)
+    @JoinColumn(name = "post_id")
+    public List<Vote> vote;
 
     public Post() {
+        this.timestamp = LocalDateTime.now();
+        this.score = 0L;
+        vote = new ArrayList<>();
     }
+
+
 
     public void setTimeStamp(LocalDateTime now) {
         this.timestamp = now;
     }
 
-    public Long getScore() {
-        return this.score;
-    }
 
     public void setScoreUpvote() {
         this.score += 1;
@@ -49,4 +49,5 @@ public class Post {
     public void setScoreDownVote() {
         this.score -= 1;
     }
+
 }

@@ -32,7 +32,7 @@ public class WebController {
     }
 
     @PostMapping("/registeraccount")
-    public String saveNewUser(@ModelAttribute String username){
+    public String saveNewUser(@ModelAttribute(value = "username") String username){
         userService.saveUser(username);
         if (userService.checkIfUserPresent()){
             return "redirect:/";

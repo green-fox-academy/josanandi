@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <title>P2P Chat</title>
+</head>
+
+<body>
+<h1>Enter</h1>
+<form name='Register account' action="#" th:action="@{/registeraccount}" method='POST'>
+        <div>Choose your name</div>
+            <label for="username">Name:</label>
+            <input type="text" id="username" name="username" />
+
+        <button th:type="submit" name="submit" value="submit ">Enter</button>
+
+</form>
+</body>
+</html>

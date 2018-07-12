@@ -8,22 +8,27 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 
-import java.time.LocalDateTime;
 
 @Controller
 public class WebController {
     UserService userService;
 
+    @Autowired
     public WebController(UserService userService) {
         this.userService = userService;
     }
 
-    @Autowired
-
 
     @GetMapping("/")
-    public String getMainPage(){
-        return "index";
+    public String getMainPage(@ModelAttribute(value = "username") String username, Model model){
+        if (userService.checkIfUserPresent()){
+            model.addAttribute("username", userService.findUserNameByFirstId());
+            return "index";
+        }
+        else{
+            return "register";
+
+        }
     }
 
     @GetMapping("/register")

@@ -5,6 +5,8 @@ import com.greenfoxacademy.p2pchat.repositories.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.Optional;
+
 @Service
 public class UserServiceImpl implements UserService {
 
@@ -22,11 +24,17 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public boolean checkIfUserPresent() {
-        if (userRepository.findById(1l) != null){
-            return true;
-        }
-        else{
+        Optional userCheck = userRepository.findById(1l);
+        if (userCheck == Optional.empty()){
             return false;
         }
+        else{
+            return true;
+        }
+    }
+
+    @Override
+    public String findUserNameByFirstId() {
+        return userRepository.findById(1l).get().getUsername();
     }
 }

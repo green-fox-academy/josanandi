@@ -46,6 +46,14 @@ public class WebController {
             return "redirect:/register";
 
         }
+    }
 
+    @PostMapping("/updateaccount")
+    public String updateUser(@ModelAttribute(value = "username") String username){
+        if(username.equals("")){
+            return "indexnouser";
+        }
+        userService.updateUser(username);
+        return "redirect:/";
     }
 }

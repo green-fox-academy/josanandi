@@ -37,4 +37,11 @@ public class UserServiceImpl implements UserService {
     public String findUserNameByFirstId() {
         return userRepository.findById(1l).get().getUsername();
     }
+
+    @Override
+    public void updateUser(String username) {
+      User existingUser =  userRepository.findById(1l).get();
+      existingUser.setUsername(username);
+      userRepository.save(existingUser);
+    }
 }

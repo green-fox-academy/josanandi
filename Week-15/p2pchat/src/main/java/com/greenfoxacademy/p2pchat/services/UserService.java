@@ -9,4 +9,6 @@ public interface UserService {
     boolean checkIfUserPresent();
 
     String findUserNameByFirstId();
+
+    void updateUser(String username);
 }

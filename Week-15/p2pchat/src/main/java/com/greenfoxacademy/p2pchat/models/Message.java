@@ -14,13 +14,15 @@ public class Message {
 
     String text;
     LocalDateTime timestamp;
-    String username;
 
-    public Message( String text, String username) {
+    @ManyToOne
+    User user;
+
+    public Message( String text, User user) {
         this.id = (Double)(Math.random()*9000000 + 1000000);
         this.text = text;
         this.timestamp = LocalDateTime.now();
-        this.username = username;
+        this.user = user;
     }
 
     public Message(Double id, LocalDateTime timestamp) {
@@ -55,11 +57,11 @@ public class Message {
         this.timestamp = timestamp;
     }
 
-    public String getUsername() {
-        return username;
+    public User getUser() {
+        return user;
     }
 
-    public void setUsername(String username) {
-        this.username = username;
+    public void setUser(User user) {
+        this.user = user;
     }
 }

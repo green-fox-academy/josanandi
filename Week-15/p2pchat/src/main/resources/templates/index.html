@@ -15,10 +15,14 @@
 
     </form>
 
-
     <ul>
-        <li th:text="${username}"></li>
+        <li>App</li>
         <li>Hi there! Submit your message using the send button!</li>
+    </ul>
+
+    <ul th:each="currentMessage : ${messages}">
+        <li th:text="${currentMessage.getUser().getUsername()}"></li>
+        <li th:text="${currentMessage.getText()}"></li>
     </ul>
 
     <form name='Save Message' action="#" th:action="@{/savemessage}" method='POST'>

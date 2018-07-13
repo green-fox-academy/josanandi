@@ -26,6 +26,7 @@ public class WebController {
     public String getMainPage(@ModelAttribute(value = "username") String username, Model model){
         if (userService.checkIfUserPresent()){
             model.addAttribute("username", userService.findUserNameByFirstId());
+            model.addAttribute("messages", messageService.getAllMessages());
             return "index";
         }
         else{
@@ -61,8 +62,8 @@ public class WebController {
     }
 
     @PostMapping("/savemessage")
-    public String saveMessage(@ModelAttribute(value = "message") String message, @ModelAttribute(value = "username") String username){
-        messageService.saveMessage(message, username);
+    public String saveMessage(@ModelAttribute(value = "message") String message){
+        messageService.saveMessage(message);
         return "redirect:/";
     }
 }

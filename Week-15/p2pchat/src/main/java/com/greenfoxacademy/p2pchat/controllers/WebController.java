@@ -1,5 +1,6 @@
 package com.greenfoxacademy.p2pchat.controllers;
 
+import com.greenfoxacademy.p2pchat.services.MessageService;
 import com.greenfoxacademy.p2pchat.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -12,10 +13,12 @@ import org.springframework.web.bind.annotation.PostMapping;
 @Controller
 public class WebController {
     UserService userService;
+    MessageService messageService;
 
     @Autowired
-    public WebController(UserService userService) {
+    public WebController(UserService userService, MessageService messageService) {
         this.userService = userService;
+        this.messageService = messageService;
     }
 
 
@@ -54,6 +57,12 @@ public class WebController {
             return "indexnouser";
         }
         userService.updateUser(username);
+        return "redirect:/";
+    }
+
+    @PostMapping("/savemessage")
+    public String saveMessage(@ModelAttribute(value = "message") String message, @ModelAttribute(value = "username") String username){
+        messageService.saveMessage(message, username);
         return "redirect:/";
     }
 }

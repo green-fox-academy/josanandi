@@ -15,5 +15,17 @@
 
     </form>
 
+
+    <ul>
+        <li th:text="${username}"></li>
+        <li>Hi there! Submit your message using the send button!</li>
+    </ul>
+
+    <form name='Save Message' action="#" th:action="@{/savemessage}" method='POST'>
+        <input type="textarea" id="message" name="message"  th:value="${message}" />
+        <button th:type="submit" name="submit" value="submit ">Send</button>
+
+    </form>
+
 </body>
 </html>

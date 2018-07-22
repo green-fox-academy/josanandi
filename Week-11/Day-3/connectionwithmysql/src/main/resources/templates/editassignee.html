@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:form="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Edit Assignee</title>
+</head>
+<body>
+<form name='Edit Assignee' action="#" th:action="@{editassignee}"  th:object="${assignee}" method='POST'>
+    <div>
+        <div>Edit Todo</div>
+        <div>
+            <label th:for="name">Assignee Name:</label>
+            <input type="text" th:field="*{name}" th:default="*{name}"/>
+        </div>
+        <button th:type="submit" name="submit" value="submit ">Submit</button>
+    </div>
+
+</form>
+
+</body>
+</html>

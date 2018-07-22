@@ -22,4 +22,21 @@ public class Assignee {
     Long id;
     String name;
     String email;
+
+    public Assignee(String name, String email) {
+        this.name = name;
+        this.email = email;
+    }
+
+    public void setId(Long idx) {
+        this.id  = idx;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String emailById) {
+        this.email = emailById;
+    }
 }

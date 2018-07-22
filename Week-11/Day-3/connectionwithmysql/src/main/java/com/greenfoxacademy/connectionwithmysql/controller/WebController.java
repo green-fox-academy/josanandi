@@ -1,6 +1,8 @@
 package com.greenfoxacademy.connectionwithmysql.controller;
 
+import com.greenfoxacademy.connectionwithmysql.model.Assignee;
 import com.greenfoxacademy.connectionwithmysql.model.ToDo;
+import com.greenfoxacademy.connectionwithmysql.services.ServiceAssignee;
 import com.greenfoxacademy.connectionwithmysql.services.ServiceToDoImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -8,6 +10,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 
+import java.util.ArrayList;
 import java.util.List;
 
 
@@ -15,10 +18,12 @@ import java.util.List;
 public class WebController {
 
     ServiceToDoImpl serviceToDoImpl;
+    ServiceAssignee serviceAssignee;
 
     @Autowired
-    public WebController(ServiceToDoImpl serviceToDoImpl) {
+    public WebController(ServiceToDoImpl serviceToDoImpl, ServiceAssignee serviceAssignee) {
         this.serviceToDoImpl = serviceToDoImpl;
+        this.serviceAssignee = serviceAssignee;
     }
 
     @GetMapping("/list")
@@ -76,8 +81,44 @@ public class WebController {
     }
 
     @GetMapping("/assigneelist")
-    public String getAssigneelist(){
+    public String getAssigneelist(Model model){
+        List<Assignee> assigneeList = serviceAssignee.findAllAssignees();
+        model.addAttribute("assignees", assigneeList);
         return "/assigneelist";
+    }
+
+    @GetMapping("/addassignee")
+    public String addNewAssignee(){
+        return "addassignee";
+    }
+
+    @PostMapping("/addassignee")
+    public String saveNewAssignee(@ModelAttribute(value="name") String name,
+                                  @ModelAttribute(value="email") String email){
+        serviceAssignee.saveAssignee(name, email);
+        return "redirect:/assigneelist";
+    }
+
+    @GetMapping(value ="/{id}/deleteassignee")
+    public String deleteAssignee(@PathVariable("id") Long idx){
+        serviceAssignee.remove(idx);
+        return "redirect:/assigneelist";
+    }
+
+    @GetMapping(value = "/{id}/editassignee")
+    public String editAssignee(@PathVariable("id") Long idx, Model model){
+        Assignee assignee = serviceAssignee.findAssigneeById(idx);
+        model.addAttribute("assignee", assignee);
+        return "editassignee";
+    }
+
+    @PostMapping(value = "/{id}/editassignee")
+    public String editAssignee(@PathVariable("id") Long idx, @ModelAttribute("assignee") Assignee assignee){
+        assignee.setId(idx);
+        String email = serviceAssignee.findEmailById(idx);
+        assignee.setEmail(email);
+        serviceAssignee.edit(assignee);
+        return "redirect:/assigneelist";
     }
 
 

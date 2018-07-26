@@ -47,4 +47,9 @@ public class ServiceAssigneeImpl implements ServiceAssignee{
         return assigneeRepository.findById(idx).get().getEmail();
 
     }
+
+    @Override
+    public Assignee findAssigneeByName(String assigneeName) {
+        return assigneeRepository.findAssigneeByName(assigneeName);
+    }
 }

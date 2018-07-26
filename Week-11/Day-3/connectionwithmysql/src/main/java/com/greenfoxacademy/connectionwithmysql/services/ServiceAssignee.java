@@ -18,4 +18,6 @@ public interface ServiceAssignee {
     void edit(Assignee assignee);
 
     String findEmailById(Long idx);
+
+    Assignee findAssigneeByName(String assigneeName);
 }

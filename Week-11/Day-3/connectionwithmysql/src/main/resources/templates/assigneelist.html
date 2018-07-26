@@ -8,6 +8,7 @@
 <h1>Assignee List:</h1>
 
 <h3><a th:href="@{addassignee}">Add new Assignee</a></h3>
+<h3><a th:href="@{list}">To Do list</a></h3>
 
 <table style="width:50%; height:300px; font-size: large">
     <tr style="background-color:pink">
@@ -20,8 +21,8 @@
 
     </tr>
     <tr th:each="assignee : ${assignees}" style="background-color:lightgray" align="center">
-        <td th:text="${assignee.id}"></td>
-        <td th:text="${assignee.name}"></td>
+        <td th:text="${assignee.id}" ></td>
+        <td><a th:href="@{'/{id}/listoftodos'(id=${assignee.id})}"  th:text="${assignee.name}"></a> </td>
         <td th:text="${assignee.email}"></td>
         <td><a th:href="@{'/{id}/deleteassignee' (id=${assignee.id})}" >delete</a></td>
         <td><a th:href="@{'/{id}/editassignee' (id=${assignee.id})}" >edit</a></td>

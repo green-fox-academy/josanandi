@@ -6,7 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.Optional;
+
 
 @Service
 public class ServiceToDoImpl implements ServiceToDo{
@@ -49,5 +49,9 @@ public class ServiceToDoImpl implements ServiceToDo{
 
     public  List<ToDo> findAllBySearchLike(String title){
         return toDoRepository.findAllByTitleContaining(title);
+    }
+
+    public List<ToDo> findAllbyAssigneeId(Long id) {
+        return toDoRepository.findAllByAssignee_Id(id);
     }
 }

@@ -9,6 +9,9 @@ import lombok.Setter;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
+import java.util.ArrayList;
+import java.util.List;
 
 @AllArgsConstructor
 @NoArgsConstructor
@@ -22,6 +25,17 @@ public class Assignee {
     Long id;
     String name;
     String email;
+
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+
 
     public Assignee(String name, String email) {
         this.name = name;
@@ -38,5 +52,9 @@ public class Assignee {
 
     public void setEmail(String emailById) {
         this.email = emailById;
+    }
+
+    public String getName() {
+        return name;
     }
 }

@@ -7,10 +7,9 @@ import lombok.NoArgsConstructor;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 
-    @NoArgsConstructor
     @Entity
-
     public class ToDo {
         @Id
         @GeneratedValue
@@ -19,20 +18,34 @@ import javax.persistence.Id;
         private Boolean urgent;
         private Boolean done;
 
+        @ManyToOne
+        Assignee assignee;
+
         public ToDo(String title, Boolean urgent, Boolean done) {
             this.title = title;
             this.urgent = urgent;
             this.done = done;
+            this.assignee = null;
         }
 
-        public ToDo(String title) {
+    public ToDo(String title, Boolean urgent, Boolean done, Assignee assignee) {
+        this.title = title;
+        this.urgent = urgent;
+        this.done = done;
+        this.assignee = assignee;
+    }
+
+    public ToDo(String title) {
             this.title = title;
             this.urgent = false;
             this.done = false;
+            this.assignee = null;
         }
 
+    public ToDo() {
+    }
 
-        public void setId(Long id) {
+    public void setId(Long id) {
             this.id = id;
         }
 
@@ -75,4 +88,12 @@ import javax.persistence.Id;
             if (this.done ) { condition = true;}
             return condition;
         }
+
+    public Assignee getAssignee() {
+        return assignee;
     }
+
+    public void setAssignee(Assignee assignee) {
+        this.assignee = assignee;
+    }
+}

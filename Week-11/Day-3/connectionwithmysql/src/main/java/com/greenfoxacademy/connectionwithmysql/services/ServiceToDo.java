@@ -15,4 +15,8 @@ public interface ServiceToDo {
     void remove(Long idx);
     void edit(ToDo toDo);
     List<ToDo> findAllByTitle(String title);
+
+    List<ToDo> findAllBySearchLike(String search);
+
+    List<ToDo> findAllbyAssigneeId(Long id);
 }

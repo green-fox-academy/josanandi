@@ -13,4 +13,6 @@ public interface ToDoRepository extends CrudRepository<ToDo, Long> {
     List<ToDo> findAllByTitle(String title);
 
     List<ToDo> findAllByTitleContaining(String title);
+
+    List<ToDo> findAllByAssignee_Id(Long id);
 }

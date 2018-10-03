@@ -1,6 +1,7 @@
 package com.greenfoxacademy.reddit.services;
 
 import com.greenfoxacademy.reddit.models.Post;
+import com.greenfoxacademy.reddit.models.Vote;
 import com.greenfoxacademy.reddit.repositories.PostRepository;
 import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,6 +15,7 @@ public class PostServiceImpl implements PostServices {
 
 
     PostRepository postRepository;
+
 
     @Autowired
     public PostServiceImpl(PostRepository postRepository) {
@@ -35,6 +37,23 @@ public class PostServiceImpl implements PostServices {
         return postRepository.findById(id).get();
     }
 
+    @Override
+    public void setScoreAndVoteUpvote(Long id, String username) {
+        Post actualPost = getPostById(id);
+        actualPost.setScoreUpvote();
+        Vote vote = new Vote(username);
+        vote.setVoteUpvote();
+        actualPost.votelist.add(vote);
+        postRepository.save(actualPost);
+    }
 
+    public void setScoreAndVoteDownvote(Long id, String username){
+        Post actualPost = getPostById(id);
+        actualPost.setScoreDownVote();
+        Vote vote = new Vote(username);
+        vote.setVoteDownvote();
+        actualPost.votelist.add(vote);
+        postRepository.save(actualPost);
+    }
 
 }

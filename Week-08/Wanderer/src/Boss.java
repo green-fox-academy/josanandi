@@ -1,7 +1,7 @@
 public class Boss extends Monsters {
 
     public Boss() {
-        this.characterMove = new PositionedImage("./wanderer-java/img/boss.png", monsterX, monsterY);
+        this.characterMove = new PositionedImage("./wanderer-java/img/boss.png", super.charX, super.charY);
     }
 
     public Boss(Map map) {
@@ -11,7 +11,7 @@ public class Boss extends Monsters {
     @Override
     public void checkIfNotWall(Map map ) {
         super.checkIfNotWall(map);
-        this.characterMove = new PositionedImage("./wanderer-java/img/boss.png", monsterX, monsterY);
+        this.characterMove = new PositionedImage("./wanderer-java/img/boss.png", super.charX, super.charY);
     }
 
     @Override
@@ -22,38 +22,38 @@ public class Boss extends Monsters {
         int number = (int) ((Math.random())*4);
 
         if (number == 0){
-            trialX= monsterX+ 72;
-            trialY = monsterY;
+            trialX= super.charX+ 72;
+            trialY = super.charY;
             if (checkIfCanMove(map, trialX, trialY)){
-                monsterX = trialX;
-                characterMove = new PositionedImage("./wanderer-java/img/boss.png", monsterX, monsterY);
+                super.charX= trialX;
+                characterMove = new PositionedImage("./wanderer-java/img/boss.png", super.charX, super.charY);
             }
             else{move(map);}
         }
         else if (number == 1){
-            trialX= monsterX- 72;
-            trialY = monsterY;
+            trialX= super.charX- 72;
+            trialY = super.charY;
             if (checkIfCanMove(map, trialX, trialY)){
-                monsterX = trialX;
-                characterMove = new PositionedImage("./wanderer-java/img/boss.png", monsterX, monsterY);
+                super.charX = trialX;
+                characterMove = new PositionedImage("./wanderer-java/img/boss.png", super.charX, super.charY);
             }
             else{move(map);}
         }
         else if (number == 2){
-            trialX= monsterX;
-            trialY = monsterY + 72;
+            trialX= super.charX;
+            trialY = super.charY + 72;
             if (checkIfCanMove(map, trialX, trialY)){
-                monsterY = trialY;
-                characterMove = new PositionedImage("./wanderer-java/img/boss.png", monsterX, monsterY);
+                super.charY = trialY;
+                characterMove = new PositionedImage("./wanderer-java/img/boss.png", super.charX, super.charY);
             }
             else{move(map);}
         }
         else if (number == 3){
-            trialX= monsterX;
-            trialY = monsterY - 72;
+            trialX= super.charX;
+            trialY = super.charY - 72;
             if (checkIfCanMove(map, trialX, trialY)){
-                monsterY = trialY;
-                characterMove = new PositionedImage("./wanderer-java/img/boss.png", monsterX, monsterY);
+                super.charY = trialY;
+                characterMove = new PositionedImage("./wanderer-java/img/boss.png", super.charX, super.charY);
             }
             else{move(map);}
         }

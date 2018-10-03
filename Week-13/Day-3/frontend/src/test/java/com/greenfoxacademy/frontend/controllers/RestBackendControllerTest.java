@@ -33,7 +33,7 @@ public class RestBackendControllerTest {
                 .param("input", "4"))
                 .andExpect(status().isOk())
                 .andExpect(content().contentType(contentType))
-                .andExpect(jsonPath("$.result", is("8")));
+                .andExpect(jsonPath("$.result", is(8)));
 
     }
 }

@@ -17,12 +17,14 @@ public class HelloWorldController {
 
     @RequestMapping("/web/greeting/world")
     public String greeting(Model model) {
-
+        String[] greetings = greeting.hellos;
+        System.out.println(greetings[1  ]);
         String valueColor ="rgb(" + (int)(Math.random()*256) + ", "+(int)(Math.random()*256)+ ", "+ (int)(Math.random()*256) + ")";
         String valueFont = (int)(Math.random()*101 +10) +"px";
         model.addAttribute("name", greeting.getController()) ;
         model.addAttribute("valueColor", valueColor);
         model.addAttribute("valueFont", valueFont);
+        model.addAttribute("greetings", greetings);
 
 
 

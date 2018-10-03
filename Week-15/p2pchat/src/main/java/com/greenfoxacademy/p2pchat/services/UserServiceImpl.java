@@ -23,9 +23,9 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public boolean checkIfUserPresent() {
-        Optional userCheck = userRepository.findById(1l);
-        if (userCheck == Optional.empty()){
+    public boolean checkIfUserPresent(String username) {
+        User userCheck = userRepository.findUserByUsername(username);
+        if (userCheck == null){
             return false;
         }
         else{
@@ -39,9 +39,16 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public void updateUser(String username) {
-      User existingUser =  userRepository.findById(1l).get();
-      existingUser.setUsername(username);
-      userRepository.save(existingUser);
+    public User findUserByUsername(String username) {
+        return userRepository.findUserByUsername(username);
     }
+
+    @Override
+    public void updateUser(String username) {
+        User existingUser =  userRepository.findById(1l).get();
+        existingUser.setUsername(username);
+        userRepository.save(existingUser);
+    }
+
+
 }

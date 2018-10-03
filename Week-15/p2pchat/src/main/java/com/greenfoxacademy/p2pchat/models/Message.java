@@ -1,9 +1,6 @@
 package com.greenfoxacademy.p2pchat.models;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.ManyToOne;
+import javax.persistence.*;
 import java.time.LocalDateTime;
 import java.util.Random;
 
@@ -15,7 +12,7 @@ public class Message {
     String text;
     LocalDateTime timestamp;
 
-    @ManyToOne
+    @ManyToOne( cascade = CascadeType.ALL)
     User user;
 
     public Message( String text, User user) {

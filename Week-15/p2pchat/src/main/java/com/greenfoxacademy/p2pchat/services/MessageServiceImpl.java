@@ -21,15 +21,15 @@ public class MessageServiceImpl implements MessageService {
     }
 
     @Override
-    public void saveMessage(String message) {
-        User existingUser =  userRepository.findById(1l).get();
+    public void saveMessage(String message, String username) {
+        User existingUser =  userRepository.findUserByUsername(username);
         Message newMessage = new Message(message, existingUser);
         messageRepository.save(newMessage);
 
     }
 
     @Override
-    public List<Message> getAllMessages() {
-        return (List<Message>) messageRepository.findAll();
+    public List<Message> getAllMessagesByUsername(String username) {
+        return (List<Message>) messageRepository.findAllByUser_Username(username);
     }
 }

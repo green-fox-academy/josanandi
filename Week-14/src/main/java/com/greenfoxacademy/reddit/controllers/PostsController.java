@@ -26,9 +26,6 @@ public class PostsController {
         return postServices.getAllPosts();
     }
 
-//    @GetMapping("/postsbyuseractivity")
-//    public List<Post> getUserActivity(@RequestHeader("username") String username){
-//    }
 
     @PostMapping("/addnewpost")
     public List<Post> addNewPost(@RequestBody (required = false) Post newPost, @RequestHeader("username") String username){
@@ -38,23 +35,14 @@ public class PostsController {
 
     @PutMapping("/posts/{id}/upvote")
     public List<Vote> upvotePost(@PathVariable Long id, @RequestHeader("username") String username){
-        Post actualPost = postServices.getPostById(id);
-        actualPost.setScoreUpvote();
-        Vote vote = new Vote(username);
-        vote.setVoteUpvote();
-        actualPost.votelist.add(vote);
-        postServices.add(actualPost);
+        postServices.setScoreAndVoteUpvote(id,username);
         return voteServices.getAllVotes();
     }
 
     @PutMapping("/posts/{id}/downvote")
-    public List<Post> downvotePost(@PathVariable Long id, @RequestHeader("username") String username){
-        Post actualPost = postServices.getPostById(id);
-        actualPost.setScoreDownVote();
-        Vote vote = new Vote(username);
-        vote.setVoteDownvote();
-        postServices.add(actualPost);
-        return postServices.getAllPosts();
+    public List<Vote> downvotePost(@PathVariable Long id, @RequestHeader("username") String username){
+        postServices.setScoreAndVoteDownvote(id, username);
+        return voteServices.getAllVotes();
     }
 
 

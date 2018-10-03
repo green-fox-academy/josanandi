@@ -10,4 +10,8 @@ public interface PostServices {
     void add(Post newPost);
 
     Post getPostById(Long id);
+
+    void setScoreAndVoteUpvote(Long id, String username);
+
+    void setScoreAndVoteDownvote(Long id, String username);
 }

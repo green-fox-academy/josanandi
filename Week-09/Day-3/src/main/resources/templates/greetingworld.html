@@ -6,5 +6,8 @@
 </head>
 <body>
 <p th:style="|color: ${valueColor}; font-size:${valueFont} |" th:text=" ${name}"/>
+<ul th:each="greeting : ${greetings}" >
+    <li th:text="${greeting}" th:style="|color: ${valueColor}; font-size:${valueFont} |"></li>
+</ul>
 </body>
 </html>

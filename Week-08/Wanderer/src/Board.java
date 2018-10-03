@@ -38,14 +38,18 @@ public class Board extends JComponent implements KeyListener {
         // you can create and draw an image using the class below e.g.
 
         maze.drawMaze(map, graphics, startingPointX, startingPointY);
-        me.drawCharacter(graphics);
 
-        for (Skeleton skeleton: hord.lot) {
-            Map disposableMap = new Map(gameList.theCharacters);
-            skeleton.checkIfNotWall(disposableMap);
-            skeleton.drawCharacter(graphics);
+        me.drawCharacter(graphics);
+        gameList.theCharacters.add(me);
+        gameList.theCharacters.add(boss);
+        for (Skeleton skeleton:hord.lot) {
+            gameList.theCharacters.add(skeleton);
         }
 
+
+        for (Skeleton skeleton: hord.lot) {
+            skeleton.drawCharacter(graphics);
+        }
         Map disposableMap = new Map(gameList.theCharacters);
 
         boss.checkIfNotWall(disposableMap);
@@ -91,16 +95,16 @@ public class Board extends JComponent implements KeyListener {
            me.checkIfCanMoveUp(upToDateMap);
            counter++;
            if (counter > 0 && counter % 2 == 0){
-               boss.move(map);
-               for (Skeleton skeleton:hord.lot) { skeleton.move(map);}
+               boss.move(upToDateMap);
+               for (Skeleton skeleton:hord.lot) { skeleton.move(upToDateMap);}
            }
         } else if(e.getKeyCode() == KeyEvent.VK_DOWN) {
-            Map upToDateMap = new Map(gameList.theCharacters);
+           Map upToDateMap = new Map(gameList.theCharacters);
             me.checkIfCanMoveDown(upToDateMap);
             counter++;
             if (counter > 0 && counter % 2 == 0){
-                boss.move(map);
-                for (Skeleton skeleton:hord.lot) { skeleton.move(map);}
+                boss.move(upToDateMap);
+                for (Skeleton skeleton:hord.lot) { skeleton.move(upToDateMap);}
             }
         }
         else if(e.getKeyCode() == KeyEvent.VK_LEFT) {
@@ -108,8 +112,8 @@ public class Board extends JComponent implements KeyListener {
             me.checkIfCanMoveLeft(upToDateMap);
             counter++;
             if (counter > 0 && counter % 2 == 0){
-                boss.move(map);
-                for (Skeleton skeleton:hord.lot) { skeleton.move(map);}
+                boss.move(upToDateMap);
+                for (Skeleton skeleton:hord.lot) { skeleton.move(upToDateMap);}
             }
         }
         else if(e.getKeyCode() == KeyEvent.VK_RIGHT) {
@@ -117,8 +121,8 @@ public class Board extends JComponent implements KeyListener {
             me.checkIfCanMoveRight(upToDateMap);
             counter++;
             if (counter > 0 && counter % 2 == 0){
-                boss.move(map);
-                for (Skeleton skeleton:hord.lot) { skeleton.move(map);}
+                boss.move(upToDateMap);
+                for (Skeleton skeleton:hord.lot) { skeleton.move(upToDateMap);}
             }
         }
 

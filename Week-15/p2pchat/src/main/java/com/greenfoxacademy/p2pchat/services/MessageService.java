@@ -5,7 +5,7 @@ import com.greenfoxacademy.p2pchat.models.Message;
 import java.util.List;
 
 public interface MessageService {
-    void saveMessage(String message);
+    void saveMessage(String message, String username);
 
-    List<Message> getAllMessages();
+    public List<Message> getAllMessagesByUsername(String username);
 }

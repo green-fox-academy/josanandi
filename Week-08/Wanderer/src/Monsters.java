@@ -1,8 +1,7 @@
 import java.awt.*;
 
 public abstract class Monsters extends Character{
-    int monsterX;
-    int monsterY;
+
 
 
     public Monsters() {
@@ -18,8 +17,8 @@ public abstract class Monsters extends Character{
 
             if (map.list[j][i] == 0){
                 condition = true;
-                this.monsterX = i*72;
-                this.monsterY = j*72;
+                super.charX = i*72;
+                super.charY = j*72;
             }
         }
     }

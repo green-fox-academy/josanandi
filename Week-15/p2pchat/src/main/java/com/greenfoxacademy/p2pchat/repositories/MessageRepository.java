@@ -8,5 +8,5 @@ import java.util.List;
 
 @Repository
 public interface MessageRepository extends CrudRepository<Message, Double> {
-    List<Message> findAllByUser_Username(String username);
+    List<Message> findAllByUsername(String username);
 }

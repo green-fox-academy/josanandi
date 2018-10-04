@@ -23,7 +23,7 @@
 </ul>
 
 <ul th:each="currentMessage : ${messages}">
-    <li th:text="${currentMessage.getUser().getUsername()}"></li>
+    <li th:text="${currentMessage.getUsername()}"></li>
     <li th:text="${currentMessage.getText()}"></li>
 </ul>
 

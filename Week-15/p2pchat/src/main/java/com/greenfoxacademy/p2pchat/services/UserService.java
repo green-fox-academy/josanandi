@@ -9,7 +9,6 @@ public interface UserService {
 
     boolean checkIfUserPresent(String username);
 
-    String findUserNameByFirstId();
 
     User findUserByUsername(String username);
 

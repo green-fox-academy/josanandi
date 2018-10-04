@@ -12,24 +12,25 @@ import java.util.List;
 @Service
 public class MessageServiceImpl implements MessageService {
     MessageRepository messageRepository;
-    UserRepository userRepository;
 
     @Autowired
-    public MessageServiceImpl(MessageRepository messageRepository, UserRepository userRepository) {
+    public MessageServiceImpl(MessageRepository messageRepository) {
         this.messageRepository = messageRepository;
-        this.userRepository = userRepository;
     }
 
     @Override
     public void saveMessage(String message, String username) {
-        User existingUser =  userRepository.findUserByUsername(username);
-        Message newMessage = new Message(message, existingUser);
+        Message newMessage = new Message(message, username);
         messageRepository.save(newMessage);
 
     }
 
+    public void updateMessage(Message message) {
+        messageRepository.save(message);
+    }
+
     @Override
     public List<Message> getAllMessagesByUsername(String username) {
-        return (List<Message>) messageRepository.findAllByUser_Username(username);
+        return (List<Message>) messageRepository.findAllByUsername(username);
     }
 }

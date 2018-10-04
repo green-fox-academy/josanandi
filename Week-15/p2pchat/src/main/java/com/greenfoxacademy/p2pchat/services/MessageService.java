@@ -8,4 +8,5 @@ public interface MessageService {
     void saveMessage(String message, String username);
 
     public List<Message> getAllMessagesByUsername(String username);
+    public void updateMessage(Message message);
 }

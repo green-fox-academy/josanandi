@@ -13,5 +13,5 @@ public interface UserService {
 
     User findUserByUsername(String username);
 
-    void updateUser(String username);
+    void updateUser(String username, String newName);
 }

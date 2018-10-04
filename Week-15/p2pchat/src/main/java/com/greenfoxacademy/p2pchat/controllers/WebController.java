@@ -1,14 +1,12 @@
 package com.greenfoxacademy.p2pchat.controllers;
 
+import com.greenfoxacademy.p2pchat.models.User;
 import com.greenfoxacademy.p2pchat.services.MessageService;
 import com.greenfoxacademy.p2pchat.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.*;
 
 
 @Controller
@@ -30,18 +28,18 @@ public class WebController {
     @PostMapping("/login")
     public String loginUser(@ModelAttribute(value = "username") String username) {
         if (userService.checkIfUserPresent(username)) {
-            return "redirect:/home/" + username;
+            return "redirect:/home/?username=" + username;
         } else {
             return "register";
         }
     }
 
-    @GetMapping("/home/{username}")
-    public String getMainPage(@PathVariable(value = "username") String username, Model model){
+    @GetMapping(value="/home")
+    public String getMainPage(@RequestParam(value = "username", required = false) String username, Model model){
         model.addAttribute("username", username);
         model.addAttribute("messages", messageService.getAllMessagesByUsername(username));
-        return "redirect:/home/"+username;
-    }
+        return "home";
+                  }
 
     @GetMapping("/register")
     public String getRegisterPage(){
@@ -52,26 +50,27 @@ public class WebController {
     public String saveNewUser(@ModelAttribute(value = "username") String username){
 
         if (userService.checkIfUserPresent(username)){
-            return "redirect:/home/" + username;
+            return "redirect:/home/?username=" + username;
         }
         else{
             userService.saveUser(username);
-            return "redirect:/home/" + username;
+            return "redirect:/home/?username=" + username;
         }
     }
 
     @PostMapping("/updateaccount")
-    public String updateUser(@ModelAttribute(value = "username") String username){
-        if(username.equals("")){
+    public String updateUser(@RequestParam String username, @ModelAttribute(value = "name") String newName){
+        if(newName.equals("")){
             return "indexnouser";
         }
-        userService.updateUser(username);
-        return "redirect:/";
+
+        userService.updateUser(username, newName);
+        return "redirect:/home/?username=" +newName;
     }
 
-    @PostMapping("/savemessage/{username}")
-    public String saveMessage(@PathVariable String username, @ModelAttribute(value = "message") String message){
+    @PostMapping("/savemessage")
+    public String saveMessage(@RequestParam String username, @ModelAttribute(value = "message") String message){
         messageService.saveMessage(message, username);
-        return "redirect:/home/" + username;
+        return "redirect:/home/?username=" + username;
     }
 }

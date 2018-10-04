@@ -44,10 +44,10 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public void updateUser(String username) {
-        User existingUser =  userRepository.findById(1l).get();
-        existingUser.setUsername(username);
-        userRepository.save(existingUser);
+    public void updateUser(String username,String newName) {
+        User actualUser = findUserByUsername(username);
+        actualUser.setUsername(newName);
+        userRepository.save(actualUser);
     }
 
 

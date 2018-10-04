@@ -7,10 +7,12 @@
 <body>
 
 <h1>Peer to Peer Chat Program</h1>
+
 <p th:if="${username}==null" th:text="The username field is empty"></p>
 <form name='Update account' action="#" th:action="@{/updateaccount}" method='POST'>
-    <label for="username">Name:</label>
-    <input type="text" id="username" name="username"  th:value="${username}" />
+    <label for="name">Name:</label>
+    <input type="text" id="name" name="name"  th:value="${newName}" />
+    <input type="hidden" th:value="${username}" name="username" />
     <button th:type="submit" name="submit" value="submit ">Update</button>
 
 </form>
@@ -25,8 +27,9 @@
     <li th:text="${currentMessage.getText()}"></li>
 </ul>
 
-<form name='Save Message' action="#" th:action="@{/savemessage/}" method='POST'>
-    <input type="textarea" id="message" name="message"  th:value="${message}" />
+<form name='Save Message' action="#" th:action="@{/savemessage}"  method='POST'>
+    <input type="textarea" id="message" name="message" th:value="${message}" />
+    <input type="hidden" th:value="${username}" name="username" />
     <button th:type="submit" name="submit" value="submit ">Send</button>
 
 </form>
